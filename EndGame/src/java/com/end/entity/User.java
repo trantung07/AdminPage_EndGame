@@ -5,37 +5,33 @@
  */
 package com.end.entity;
 
+import java.util.Date;
+
 /**
  *
  * @author Tran Tung
  */
 public class User {
+
     private int id;
     private String username;
     private String password;
     private String firstName;
     private String lastName;
     private String displayName;
-    private int age;
+
     private String email;
+    private Date birthday;
     private int sex;
+    private int roleId;
+    private String phone;
     private boolean status;
+    private int createdBy;
+    private int updatedBy;
 
     public User() {
     }
 
-    public User(int id, String username, String password, String firstName, String lastName, String displayName, int age, String email, int sex, boolean status) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.displayName = displayName;
-        this.age = age;
-        this.email = email;
-        this.sex = sex;
-        this.status = status;
-    }
 
     public int getId() {
         return id;
@@ -85,13 +81,6 @@ public class User {
         this.displayName = displayName;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
 
     public String getEmail() {
         return email;
@@ -109,6 +98,16 @@ public class User {
         this.sex = sex;
     }
 
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
+    
+
     public boolean isStatus() {
         return status;
     }
@@ -116,5 +115,39 @@ public class User {
     public void setStatus(boolean status) {
         this.status = status;
     }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public int getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(int createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public int getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(int updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+    
+    
 
 }

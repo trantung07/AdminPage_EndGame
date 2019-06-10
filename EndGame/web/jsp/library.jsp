@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <head>
     <meta charset="utf-8">
     <title>Avant</title>
@@ -15,7 +16,7 @@
 
     <link rel="stylesheet" href="/EndGame/jsp/assets/css/styles.minc726.css?=140">
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>
-
+    
 
     <link href='/EndGame/jsp/assets/demo/variations/default.css' rel='stylesheet' type='text/css' media='all' id='styleswitcher'> 
 
@@ -36,7 +37,6 @@
     <link rel='stylesheet' type='text/css' href='/EndGame/jsp/assets/plugins/form-markdown/css/bootstrap-markdown.min.css' /> 
     <link rel='stylesheet' type='text/css' href='/EndGame/jsp/assets/plugins/codeprettifier/prettify.css' /> 
     <link rel='stylesheet' type='text/css' href='/EndGame/jsp/assets/plugins/form-toggle/toggles.css' />
-
     <!--
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
@@ -44,6 +44,7 @@
     <script>!window.jQuery && document.write(unescape('%3Cscript src="assets/js/jquery-1.10.2.min.js"%3E%3C/script%3E'))</script>
     <script type="text/javascript">!window.jQuery.ui && document.write(unescape('%3Cscript src="assets/js/jqueryui-1.10.3.min.js'))</script>
     -->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 
     <script type='text/javascript' src='/EndGame/jsp/assets/js/jquery-1.10.2.min.js'></script> 
     <script type='text/javascript' src='/EndGame/jsp/assets/js/jqueryui-1.10.3.min.js'></script> 
@@ -65,8 +66,8 @@
     <!-- <script type='text/javascript' src='assets/demo/demo-index.js'></script>  -->
     <script type='text/javascript' src='/EndGame/jsp/assets/js/placeholdr.js'></script> 
     <script type='text/javascript' src='/EndGame/jsp/assets/js/application.js'></script> 
+    
     <!-- <script type='text/javascript' src='assets/demo/demo.js'></script>  -->
-
     <script>
         (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
@@ -84,4 +85,5 @@
         ga('send', 'pageview');
 
     </script>
+    
 </head>

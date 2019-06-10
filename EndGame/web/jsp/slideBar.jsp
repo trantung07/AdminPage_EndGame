@@ -13,8 +13,8 @@
         <li><a href="index.html"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
         <li><a href="javascript:;"><i class="fa fa-user"></i> <span>Quản lý người dùng</span> </a>
             <ul class="acc-menu">
-                <li><a href="layout-grid.html"><span>Danh sách</span></a></li>
-                <li><a href="layout-horizontal.html"><span>Thêm mới</span></a></li>
+                <li><a href="<%=request.getContextPath()%>/getAllUser.htm"><span>Danh sách</span></a></li>
+                <li><a href="<%=request.getContextPath()%>/initInsertUser.htm"><span>Thêm mới</span></a></li>
             </ul>
         </li>
         

@@ -1,0 +1,61 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.end.util;
+
+import java.text.DateFormat;
+import java.text.Format;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+/**
+ *
+ * @author Tran Tung
+ */
+public class CommonFunc {
+
+    final static String DATE_FORMAT = "dd-MM-yyyy";
+    final static String EMAIL_FORMAT = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+
+    public static boolean isDateValid(String date) {
+        try {
+            DateFormat df = new SimpleDateFormat(DATE_FORMAT);
+            df.setLenient(false);
+            df.parse(date);
+            return true;
+        } catch (ParseException e) {
+            return false;
+        }
+    }
+
+    public static Date convertDateSqlToUtil(java.sql.Date sqlDate) {
+        Date utilDate = null;
+        if (sqlDate != null) {
+            utilDate = new Date(sqlDate.getTime());
+        }
+        return utilDate;
+    }
+
+    public static java.sql.Date convertDateUtilToSql(Date utilDate) {
+        java.sql.Date sqlDate = null;
+        if (utilDate != null) {
+            sqlDate = new java.sql.Date(utilDate.getTime());
+        }
+        return sqlDate;
+    }
+
+    public static boolean isValidEmailAddress(String email) {
+        String ePattern = EMAIL_FORMAT;
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+        java.util.regex.Matcher m = p.matcher(email);
+        return m.matches();
+    }
+
+    public static String convertDateToString(Date date) {
+        Format formatter = new SimpleDateFormat("yyyyMMdd");
+        return formatter.format(date);
+    }
+}

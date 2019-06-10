@@ -18,7 +18,7 @@
                     <div id='wrap'>
                         <div id="page-heading">
                             <ol class="breadcrumb">
-                                <li class='active'><a href="index-2.html">Dashboard</a></li>
+                                <li class='active'><a href="#">Dashboard</a></li>
                             </ol>
                             <h1>Dashboard</h1>
                             <div class="options">

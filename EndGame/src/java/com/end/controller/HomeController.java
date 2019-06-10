@@ -7,11 +7,13 @@ package com.end.controller;
 
 import com.end.dao.UserDao;
 import com.end.entity.User;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -43,6 +45,7 @@ public class HomeController {
     public String loginBackend(@ModelAttribute("user") User user, Model model, HttpSession session) {
         User us = userDao.checkLoginAdminPage(user);
         if (us != null) {
+            session.setAttribute("id", us.getId());
             session.setAttribute("username", us.getUsername());
             session.setAttribute("displayName", us.getDisplayName());
             session.setAttribute("lastName", us.getLastName());
@@ -66,4 +69,12 @@ public class HomeController {
         }
         return model;
     }
+    
+    @RequestMapping(value="/logout", method = RequestMethod.GET)
+        public String logout(HttpServletRequest request){
+            HttpSession session = request.getSession();
+            session.invalidate();
+            return "redirect:/initLogin.htm";
+        }
+    
 }

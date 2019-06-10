@@ -100,7 +100,7 @@
                         <li><a href="#">Account <i class="pull-right fa fa-cog"></i></a></li>
                         <li><a href="#">Help <i class="pull-right fa fa-question-circle"></i></a></li>
                         <li class="divider"></li>
-                        <li><a href="#" class="text-right">Sign Out</a></li>
+                        <li><a href="<%=request.getContextPath()%>/logout.htm" class="text-right">Sign Out</a></li>
                     </ul>
                 </li>
             </ul>
@@ -115,32 +115,32 @@
                 <div class="scrollthis">
                     <li><a href="#" class="active">
                             <span class="time">6 mins</span>
-                            <img src="assets/demo/avatar/doyle.png" alt="avatar" />
+                            <img src="/EndGame/jsp/assets/demo/avatar/doyle.png" alt="avatar" />
                             <div><span class="name">Alan Doyle</span><span class="msg">Please mail me the files by tonight.</span></div>
                         </a></li>
                     <li><a href="#">
                             <span class="time">12 mins</span>
-                            <img src="assets/demo/avatar/paton.png" alt="avatar" />
+                            <img src="/EndGame/jsp/assets/demo/avatar/paton.png" alt="avatar" />
                             <div><span class="name">Polly Paton</span><span class="msg">Uploaded all the files to server. Take a look.</span></div>
                         </a></li>
                     <li><a href="#">
                             <span class="time">9 hrs</span>
-                            <img src="assets/demo/avatar/corbett.png" alt="avatar" />
+                            <img src="/EndGame/jsp/assets/demo/avatar/corbett.png" alt="avatar" />
                             <div><span class="name">Simon Corbett</span><span class="msg">I am signing off for today.</span></div>
                         </a></li>
                     <li><a href="#">
                             <span class="time">2 days</span>
-                            <img src="assets/demo/avatar/tennant.png" alt="avatar" />
+                            <img src="/EndGame/jsp/assets/demo/avatar/tennant.png" alt="avatar" />
                             <div><span class="name">David Tennant</span><span class="msg">How are you doing?</span></div>
                         </a></li>
                     <li><a href="#">
                             <span class="time">6 mins</span>
-                            <img src="assets/demo/avatar/doyle.png" alt="avatar" />
+                            <img src="/EndGame/jsp/assets/demo/avatar/doyle.png" alt="avatar" />
                             <div><span class="name">Alan Doyle</span><span class="msg">Please mail me the files by tonight.</span></div>
                         </a></li>
                     <li><a href="#">
                             <span class="time">12 mins</span>
-                            <img src="assets/demo/avatar/paton.png" alt="avatar" />
+                            <img src="/EndGame/jsp/assets/demo/avatar/paton.png" alt="avatar" />
                             <div><span class="name">Polly Paton</span><span class="msg">Uploaded all the files to server. Take a look.</span></div>
                         </a></li>
                 </div>
