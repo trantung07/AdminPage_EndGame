@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,6 +44,10 @@ public class HomeController {
 
     @RequestMapping(value = "loginAdmin")
     public String loginBackend(@ModelAttribute("user") User user, Model model, HttpSession session) {
+        if (StringUtils.isEmpty(user.getUsername()) || StringUtils.isEmpty(user.getUsername())) {
+            model.addAttribute("message", "Hãy nhập thông tin cần thiết.");
+            return "login";
+        }
         User us = userDao.checkLoginAdminPage(user);
         if (us != null) {
             session.setAttribute("id", us.getId());
@@ -69,12 +74,12 @@ public class HomeController {
         }
         return model;
     }
-    
-    @RequestMapping(value="/logout", method = RequestMethod.GET)
-        public String logout(HttpServletRequest request){
-            HttpSession session = request.getSession();
-            session.invalidate();
-            return "redirect:/initLogin.htm";
-        }
-    
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        session.invalidate();
+        return "redirect:/initLogin.htm";
+    }
+
 }

@@ -9,6 +9,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
+    <title>Danh sách người dùng</title>
     <jsp:include page="library.jsp"></jsp:include>
         <body class="">
         <jsp:include page="header.jsp"></jsp:include>
@@ -53,7 +54,7 @@
                                                             <th>Tài khoản</th>
                                                             <th>Tên hiển thị</th>
                                                             <th>Role</th>
-                                                            <th>Năm sinh</th>
+                                                            <th>Ngày sinh</th>
                                                             <th>Giới tính</th>
                                                             <th></th>
                                                         </tr>
@@ -64,8 +65,13 @@
                                                             <td align="left"><i>${user.firstName} ${user.lastName}</i></td>
                                                             <td>${user.username}</td>
                                                             <td>${user.displayName}</td>
-                                                            <td>${user.roleId}</td>
-                                                            <td><fmt:formatDate pattern="yyyy" value="${user.birthday}"/></td>
+                                                            <c:forEach items="${roleList}" var="role">
+                                                                <c:if test="${role.id == user.roleId}">
+                                                                    <td>${role.roleName}</td>
+                                                                </c:if>
+                                                            </c:forEach>
+                                                            
+                                                            <td>${user.birthday}</td>
 
                                                             <c:if test="${user.sex == 1}">
                                                                 <td>Nam</td>
@@ -97,7 +103,7 @@
                                                     </c:forEach>
 
                                                 </tbody>
-                                                <caption>List of countries by distribution wealth</caption>
+                                                
                                             </table>
                                         </div>
                                     </div>

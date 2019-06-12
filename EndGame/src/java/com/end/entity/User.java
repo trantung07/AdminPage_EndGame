@@ -21,7 +21,7 @@ public class User {
     private String displayName;
 
     private String email;
-    private Date birthday;
+    private String birthday;
     private int sex;
     private int roleId;
     private String phone;
@@ -124,11 +124,11 @@ public class User {
         this.phone = phone;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 

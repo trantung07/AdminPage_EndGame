@@ -45,19 +45,19 @@
             <a href="index.html"><img src="/EndGame/jsp/assets/img/logo-big.png" alt="Logo" class="brand" /></a>
             <div class="panel panel-primary">
                 <div class="panel-body">
-                    <h4 class="text-center" style="margin-bottom: 25px;">Log in to get started</h4>
+                    <h2 class="text-center" style="margin-bottom: 25px;">Đăng nhập</h2>
                     <f:form action="loginAdmin.htm" commandName="user" class="form-horizontal">
                         <div style="color: red">
                                                         ${message}
                                                     </div>
                         <div class="form-group">
-                            <label for="email" class="control-label col-sm-4" style="text-align: left;">Email</label>
+                            <label for="email" class="control-label col-sm-4" style="text-align: left;">Tài khoản</label>
                             <div class="col-sm-8">
                                 <f:input type="text" class="form-control" placeholder="Tên đăng nhập" path="username" id="username" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="password" class="control-label col-sm-4" style="text-align: left;">Password</label>
+                            <label for="password" class="control-label col-sm-4" style="text-align: left;">Mật khẩu</label>
                             <div class="col-sm-8">
                                 <f:input type="password" class="form-control" placeholder="Mật khẩu" path="password" id="password" />
                             </div>
@@ -71,11 +71,7 @@
 
                 </div>
                 <div class="panel-footer">
-                    <a href="extras-forgotpassword.html" class="pull-left btn btn-link" style="padding-left:0">Forgot password?</a>
-
-                    <div class="pull-right">
-                        <a href="#" class="btn btn-default">Reset</a>
-                    </div>
+                    <a href="extras-forgotpassword.html" class="pull-left btn btn-link" style="padding-left:0">Quên mật khẩu?</a>
                 </div>
             </div>
         </div>

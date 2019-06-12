@@ -40,7 +40,9 @@ public class UserController {
             model.addAttribute("user", user);
             return "login";
         } else {
+            List<Role> listRole = userDao.getAllRole();
             List<User> list = userDao.getAllUser();
+            model.addAttribute("roleList", listRole);
             model.addAttribute("userList", list);
             return "userList";
         }
@@ -92,7 +94,7 @@ public class UserController {
         
         if (StringUtils.isEmpty(user.getDisplayName())) {
             model.addAttribute("message", "Hãy nhập tên hiển thị");
-            model.addAttribute("errisplayName", "has-error");
+            model.addAttribute("errDisplayName", "has-error");
             return "userAdd";
         }
         
@@ -104,7 +106,7 @@ public class UserController {
         
         Date date = new Date();
         try {
-            if (date.compareTo(user.getBirthday()) < 0) {
+            if (date.compareTo(CommonFunc.convertStringToDate(user.getBirthday())) < 0) {
                 model.addAttribute("message", "Ngày sinh bạn nhập lớn hơn ngày hiện tại");
                 model.addAttribute("errDOB", "has-error");
                 return "userAdd";

@@ -31,7 +31,7 @@ public class UserDao {
         CallableStatement stm = null;
         ResultSet rs = null;
         User us = new User();
-                
+
         con = DBConnection.openConnection();
         try {
             stm = con.prepareCall("{ call checkLogin(?,?)}");
@@ -55,9 +55,12 @@ public class UserDao {
         } finally {
             DBConnection.closeConnection(con, stm, rs);
         }
+        if (us.getUsername() == null) {
+            return null;
+        }
         return us;
     }
-    
+
     public List<User> getAllUser() {
         Connection con = null;
         CallableStatement stm = null;
@@ -67,7 +70,7 @@ public class UserDao {
         try {
             stm = con.prepareCall("{ call getActiveUsers()}");
             rs = stm.executeQuery();
-            
+
             while (rs.next()) {
                 User us = new User();
                 us.setId(rs.getInt("id"));
@@ -77,9 +80,9 @@ public class UserDao {
                 us.setLastName(rs.getString("last_name"));
                 us.setDisplayName(rs.getString("display_name"));
                 us.setEmail(rs.getString("email"));
-                us.setBirthday(CommonFunc.convertDateSqlToUtil(rs.getDate("birthday")));
+                us.setBirthday(rs.getString("birthday"));
                 us.setSex(rs.getInt("sex"));
-                
+
                 Role role = new Role();
                 role.setId(rs.getInt("role_id"));
                 role.setRoleName(rs.getString("role_name"));
@@ -95,7 +98,7 @@ public class UserDao {
         }
         return list;
     }
-    
+
     public List<User> getUsetByUsername(String username) {
         Connection con = null;
         CallableStatement stm = null;
@@ -106,7 +109,7 @@ public class UserDao {
             stm = con.prepareCall("{ call getUsetByUsername(?)}");
             stm.setString(1, username);
             rs = stm.executeQuery();
-            
+
             while (rs.next()) {
                 User us = new User();
                 us.setId(rs.getInt("id"));
@@ -116,7 +119,7 @@ public class UserDao {
                 us.setLastName(rs.getString("last_name"));
                 us.setDisplayName(rs.getString("display_name"));
                 us.setEmail(rs.getString("email"));
-                us.setBirthday(CommonFunc.convertDateSqlToUtil(rs.getDate("birthday")));
+                us.setBirthday(rs.getString("birthday"));
                 us.setSex(rs.getInt("sex"));
                 us.setRoleId(rs.getInt("role_id"));
                 us.setStatus(rs.getBoolean("status"));
@@ -129,6 +132,7 @@ public class UserDao {
         }
         return list;
     }
+
     public List<Role> getAllRole() {
         Connection con = null;
         CallableStatement stm = null;
@@ -138,9 +142,9 @@ public class UserDao {
         try {
             stm = con.prepareCall("{ call getAllRole()}");
             rs = stm.executeQuery();
-            
+
             while (rs.next()) {
-                
+
                 Role role = new Role();
                 role.setId(rs.getInt("id"));
                 role.setRoleName(rs.getString("role_name"));
@@ -154,11 +158,11 @@ public class UserDao {
         }
         return list;
     }
-    
-    public boolean insertUser(User user){
+
+    public boolean insertUser(User user) {
         Connection con = null;
         CallableStatement stm = null;
-        boolean result = false;    
+        boolean result = false;
         ResultSet rs = null;
         try {
             con = DBConnection.openConnection();
@@ -169,9 +173,9 @@ public class UserDao {
             stm.setString(4, user.getFirstName());
             stm.setString(5, user.getLastName());
             stm.setString(6, user.getDisplayName());
-            
+
             stm.setString(7, user.getEmail());
-            stm.setDate(8, CommonFunc.convertDateUtilToSql(user.getBirthday()));
+            stm.setString(8, user.getBirthday());
             stm.setString(9, user.getPhone());
             stm.setInt(10, user.getSex());
             stm.setInt(11, user.getCreatedBy());
@@ -180,9 +184,10 @@ public class UserDao {
             result = true;
         } catch (SQLException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
-        } finally{
+        } finally {
             DBConnection.closeConnection(con, stm, rs);
         }
         return result;
     }
+
 }

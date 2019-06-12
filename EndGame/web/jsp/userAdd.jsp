@@ -158,7 +158,7 @@
                 $("#sex").val(1);
                 $("#birthday").datepicker();
                 $("#birthday").datepicker("setDate", new Date());
-                $("#birthday").datepicker("option", "dateFormat", "mm/dd/yy");
+                $("#birthday").datepicker("option", "dateFormat", "dd/mm/yy");
                 $("#birthday").datepicker("option", "changeMonth", true);
                 $("#birthday").datepicker("option", "changeYear", true);
                 $("#birthday").datepicker("option", "maxDate", "+0m +0w");

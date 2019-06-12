@@ -17,7 +17,7 @@ import java.util.Date;
  */
 public class CommonFunc {
 
-    final static String DATE_FORMAT = "dd-MM-yyyy";
+    final static String DATE_FORMAT = "dd/MM/yyyy";
     final static String EMAIL_FORMAT = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
 
     public static boolean isDateValid(String date) {
@@ -57,5 +57,18 @@ public class CommonFunc {
     public static String convertDateToString(Date date) {
         Format formatter = new SimpleDateFormat("yyyyMMdd");
         return formatter.format(date);
+    }
+
+    public static Date convertStringToDate(String dateInString) {
+        DateFormat df = new SimpleDateFormat(DATE_FORMAT);
+        Date startDate = null;
+        try {
+            startDate = df.parse(dateInString);
+            String newDateString = df.format(startDate);
+            System.out.println(newDateString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return startDate;
     }
 }
