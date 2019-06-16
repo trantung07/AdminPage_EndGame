@@ -24,6 +24,14 @@
     <welcome-file-list>
         <welcome-file>redirect.jsp</welcome-file>
     </welcome-file-list>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/jsp/404-page.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/jsp/500-page.jsp</location>
+    </error-page>
     
     <filter>  
         <filter-name>encodingFilter</filter-name>  

@@ -24,18 +24,6 @@
                                 <li class='active'><a href="#">Quản lý người dùng</a></li>
                             </ol>
                             <h1>Danh sách người dùng</h1>
-                            <div class="options">
-                                <div class="btn-toolbar">
-                                    <div class="btn-group hidden-xs">
-                                        <a href='#' class="btn btn-default dropdown-toggle" data-toggle='dropdown'><i class="fa fa-cloud-download"></i><span class="hidden-xs hidden-sm hidden-md"> Export as</span> <span class="caret"></span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">Text File (*.txt)</a></li>
-                                            <li><a href="#">Excel File (*.xlsx)</a></li>
-                                            <li><a href="#">PDF File (*.pdf)</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <div class="container">
                             <div class="row">
@@ -70,7 +58,7 @@
                                                                     <td>${role.roleName}</td>
                                                                 </c:if>
                                                             </c:forEach>
-                                                            
+
                                                             <td>${user.birthday}</td>
 
                                                             <c:if test="${user.sex == 1}">
@@ -84,18 +72,21 @@
                                                             </c:if>
                                                             <td>
                                                                 <div class="">
-                                                                    <a title="Xem chi tiết về ${user.lastName}" class="blue" href="#">
+
+                                                                    <a title="Xem chi tiết về ${user.lastName}" class="blue" href="initDetailUser.htm?id=${user.id}">
                                                                         <i class=" fa fa-search-plus bigger-250"></i>
                                                                     </a>
-                                                                    
 
-                                                                    <a title="Chỉnh sửa" class="green" style="padding-left: 10px" href="initUpdateUser.htm?id=${user.id}">
-                                                                        <i class="ace-icon fa fa-pencil bigger-130"></i>
-                                                                    </a>
-
-                                                                    <a title="Xóa" class="red" style="padding-left: 10px" href="deleteUser.htm?id=${user.id}">
-                                                                        <i class="ace-icon fa fa-trash-o bigger-130"></i>
-                                                                    </a>
+                                                                    <c:if test="${sessionScope.roleId == 1 || (sessionScope.roleId == 2 && user.roleId == 3) }">
+                                                                        <a title="Chỉnh sửa" class="green" style="padding-left: 10px" href="initUpdateUser.htm?id=${user.id}">
+                                                                            <i class="ace-icon fa fa-pencil bigger-130"></i>
+                                                                        </a>
+                                                                        <c:if test="${sessionScope.id != user.id}">
+                                                                            <a title="Xóa" id="delBtn" class="red" style="padding-left: 10px" href="deleteUser.htm?id=${user.id}" >
+                                                                            <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                                                                        </a>
+                                                                        </c:if>
+                                                                    </c:if>
                                                                 </div>
 
                                                             </td>
@@ -103,7 +94,7 @@
                                                     </c:forEach>
 
                                                 </tbody>
-                                                
+
                                             </table>
                                         </div>
                                     </div>
@@ -111,11 +102,77 @@
                             </div>
                         </div>
                     </div> <!-- container -->
+                    <div class="modal visiblemodal" id="openModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    <h4 class="modal-title">Modal title</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>One fine body…</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" id="confirmBtn" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
                 </div> <!--wrap -->
             </div> <!-- page-content -->
 
             <jsp:include page="footer.jsp"></jsp:include>
 
-        </div> <!-- page-container -->
+            </div> <!-- page-container -->
+            <script type="text/javascript">
+                //                onclick="$('#openModal').show();"
+                $(document).ready(function () {
+                    $("#confirmBtn").submit(function (event) {
+                        //stop submit the form, we will post it manually.
+                        event.preventDefault();
+                        fire_ajax_submit();
+                    });
+                });
+
+                function fire_ajax_submit() {
+
+                    var search = {}
+                    search["username"] = $("#username").val();
+
+                    $("#btn-search").prop("disabled", true);
+
+                    $.ajax({
+                        type: "POST",
+                        contentType: "application/json",
+                        url: "/deleteUser.htm?id=${user.id}",
+                        data: JSON.stringify(search),
+                        dataType: 'json',
+                        cache: false,
+                        timeout: 600000,
+                        success: function (data) {
+
+                            var json = "<h4>Ajax Response</h4><pre>"
+                                    + JSON.stringify(data, null, 4) + "</pre>";
+                            $('#feedback').html(json);
+
+                            console.log("SUCCESS : ", data);
+                            $("#btn-search").prop("disabled", false);
+
+                        },
+                        error: function (e) {
+
+                            var json = "<h4>Ajax Response</h4><pre>"
+                                    + e.responseText + "</pre>";
+                            $('#feedback').html(json);
+
+                            console.log("ERROR : ", e);
+                            $("#btn-search").prop("disabled", false);
+
+                        }
+                    });
+
+                }
+        </script>
     </body>
 </html>

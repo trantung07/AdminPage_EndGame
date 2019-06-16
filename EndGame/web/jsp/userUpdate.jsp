@@ -10,7 +10,7 @@
 <html lang="en">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta charset="utf-8" />
-    <title>Thêm mới người dùng</title>
+    <title>Chỉnh sửa người dùng</title>
     <jsp:include page="library.jsp"></jsp:include>
         <body class="">
         <jsp:include page="header.jsp"></jsp:include>
@@ -30,26 +30,36 @@
                         <div class="container">
                             <div class="panel panel-green">
                                 <div class="panel-heading">
-                                    <h4>Thêm mới người dùng</h4>
+                                    <h4>Chỉnh sửa thông tin người dùng</h4>
                                 </div>
                                 <div class="panel-body">
 
-                                <f:form class="form-horizontal" action="insertUser.htm" commandName="newUser">
-                                    <div id="infoRequired" style="size: 10px; color: red; font-style: italic;">Các trường có dấu * là các trường bắt buộc</div>
+                                <f:form class="form-horizontal" action="updateUser.htm" commandName="updateUser">
                                     <div style="color: red">
                                         ${message}
                                     </div>
                                     <div class="form-group ${errorClass}">
+                                        <input type="hidden" name="id" value="${updateUser.id}"/>
                                         <label for="username" class="col-sm-3 control-label">Tài khoản</label>
                                         <div class="col-sm-6">
-                                            <f:input type="text" id="username" placeholder="Nhập TK" class="form-control col-md-7 col-xs-12" path="username" />
+                                            <input type="text" id="username" placeholder="Nhập TK" class="form-control col-md-7 col-xs-12" value="${updateUser.username}" name="username" readonly="readonly"/>
                                         </div>
                                         <div class="col-md-3"><p class="help-block"><i class="fa fa-asterisk"></i></p></div>
                                     </div>
                                     <div class="form-group ${errPassword}" id="form-password" >
                                         <label for="password" class="col-sm-3 control-label">Mật khẩu</label>
                                         <div class="col-sm-6">
-                                            <f:input type="password" id="password" placeholder="Nhập mật khẩu" class="form-control col-md-7 col-xs-12" path="password" />
+                                            <f:input type="password" id="password" placeholder="Mật khẩu sẽ không thay đổi nếu để trống" class="form-control col-md-7 col-xs-12" path="password" />
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p class="help-block"><i class="fa fa-asterisk"></i></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group ${errRePassword}" id="form-password" >
+                                        <label for="rePassword" class="col-sm-3 control-label">Xác nhận mật khẩu</label>
+                                        <div class="col-sm-6">
+                                            <f:input type="password" id="rePassword" placeholder="Nhập lại mật khẩu vừa nhập" class="form-control col-md-7 col-xs-12" path="rePassword" />
                                         </div>
                                         <div class="col-md-3">
                                             <p class="help-block"><i class="fa fa-asterisk"></i></p>
@@ -74,6 +84,7 @@
                                         <label for="lastName" class="col-sm-3 control-label">Tên hiển thị</label>
                                         <div class="col-sm-6">
                                             <f:input type="text" id="displayName" placeholder="Nhập tên hiển thị" class="form-control col-md-7 col-xs-12" path="displayName" />
+
                                         </div>
                                         <div class="col-md-3"><p class="help-block"><i class="fa fa-asterisk"></i></p></div>
                                     </div>
@@ -108,14 +119,17 @@
                                     <div class="form-group ${errDOB}" id="form-dob" >
                                         <label for="birthday" class="col-sm-3 control-label">Ngày sinh</label>
                                         <div class="col-sm-6">
-                                            <f:input type="text" id="birthday" placeholder="Chọn ngày sinh" class="datepicker form-control col-md-7 col-xs-12 " path="birthday" readonly="readonly" />
+                                            <input type="text" id="birthday" value="${updateUser.birthday}" 
+                                                   readonly="readonly" class="datepicker form-control col-md-7 col-xs-12 " 
+                                                   name="birthday" 
+                                                   onclick="$('#birthday').datepicker();$('#birthday').datepicker('show');" />
                                         </div>
                                     </div>    
 
                                     <div class="form-group ${errPhone}" id="form-phone" >
                                         <label for="phone" class="col-sm-3 control-label">Số điện thoại</label>
                                         <div class="col-sm-6">
-                                            <f:input type="text" id="phone" maxlength="20" placeholder="Nhập số điện thoại" class="form-control col-md-7 col-xs-12" path="phone" />
+                                            <f:input type="text" id="phone" maxlength="20" placeholder="Nhập số điện thoại" class="form-control col-md-7 col-xs-12" path="phone"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -139,14 +153,15 @@
 
         <script>
             $(document).ready(function () {
-                $("#sex").val(1);
-                $("#birthday").datepicker();
-                $("#birthday").datepicker("setDate", new Date());
-                $("#birthday").datepicker("option", "dateFormat", "dd/mm/yy");
-                $("#birthday").datepicker("option", "changeMonth", true);
-                $("#birthday").datepicker("option", "changeYear", true);
-                $("#birthday").datepicker("option", "maxDate", "+0m +0w");
-                $("#birthday").datepicker("option", "showAnim", "slideDown");
+                $("#password").val("");
+                $("#rePassword").val("");
+
+//                $("#birthday").datepicker("setDate", ss);
+//                $("#birthdayDate").datepicker("option", "dateFormat", "dd/mm/yy");
+//                $("#birthdayDate").datepicker("option", "changeMonth", true);
+//                $("#birthdayDate").datepicker("option", "changeYear", true);
+//                $("#birthdayDate").datepicker("option", "maxDate", "+0m +0w");
+//                $("#birthdayDate").datepicker("option", "showAnim", "slideDown");
             });
 
         </script>

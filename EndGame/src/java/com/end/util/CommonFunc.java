@@ -71,4 +71,22 @@ public class CommonFunc {
         }
         return startDate;
     }
+
+    public static String convertStringDateUKUS(String dateInString) {
+        String[] dateParts = dateInString.split("/");
+        String day = dateParts[0];
+        String month = dateParts[1];
+        String year = dateParts[2];
+
+        return month + "/" + day + "/" + year;
+    }
+    
+    public static String convertStringDateUSUK(String dateInString) {
+        String[] dateParts = dateInString.split("/");
+        String month = dateParts[0];
+        String day = dateParts[1];
+        String year = dateParts[2];
+
+        return day + "/" + month + "/" + year;
+    }
 }

@@ -19,7 +19,6 @@ public class User {
     private String firstName;
     private String lastName;
     private String displayName;
-
     private String email;
     private String birthday;
     private int sex;
@@ -28,10 +27,12 @@ public class User {
     private boolean status;
     private int createdBy;
     private int updatedBy;
+    private String rePassword;
+    private String createdDate;
+    private String updatedDate;
 
     public User() {
     }
-
 
     public int getId() {
         return id;
@@ -81,7 +82,6 @@ public class User {
         this.displayName = displayName;
     }
 
-
     public String getEmail() {
         return email;
     }
@@ -105,8 +105,6 @@ public class User {
     public void setRoleId(int roleId) {
         this.roleId = roleId;
     }
-
-    
 
     public boolean isStatus() {
         return status;
@@ -147,7 +145,30 @@ public class User {
     public void setUpdatedBy(int updatedBy) {
         this.updatedBy = updatedBy;
     }
-    
-    
 
+    public String getRePassword() {
+        return rePassword;
+    }
+
+    public void setRePassword(String rePassword) {
+        this.rePassword = rePassword;
+    }
+
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public String getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(String updatedDate) {
+        this.updatedDate = updatedDate;
+    }
+
+    
 }

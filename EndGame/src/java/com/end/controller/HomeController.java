@@ -54,6 +54,7 @@ public class HomeController {
             session.setAttribute("username", us.getUsername());
             session.setAttribute("displayName", us.getDisplayName());
             session.setAttribute("lastName", us.getLastName());
+            session.setAttribute("roleId", us.getRoleId());
             return "redirect: homeBackend.htm";
         } else {
             model.addAttribute("message", "Sai thông tin đăng nhập.");

@@ -11,7 +11,6 @@ import com.end.util.CommonFunc;
 import com.end.util.DBConnection;
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -48,7 +47,7 @@ public class UserDao {
                 us.setEmail(rs.getString("email"));
                 us.setSex(rs.getInt("sex"));
                 us.setStatus(rs.getBoolean("status"));
-
+                us.setRoleId(rs.getInt("role_id"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -190,4 +189,89 @@ public class UserDao {
         return result;
     }
 
+    public User getUserById(int id) {
+        Connection conn = null;
+        CallableStatement calla = null;
+        ResultSet rs = null;
+        User us = new User();
+        try {
+            conn = DBConnection.openConnection();
+            calla = conn.prepareCall("{call getUsetByID(?)}");
+            calla.setInt(1, id);
+            rs = calla.executeQuery();
+            while (rs.next()) {
+                us.setId(rs.getInt("id"));
+                us.setUsername(rs.getString("username"));
+                us.setPassword(rs.getString("password"));
+                us.setFirstName(rs.getString("first_name"));
+                us.setLastName(rs.getString("last_name"));
+                us.setDisplayName(rs.getString("display_name"));
+                us.setEmail(rs.getString("email"));
+                us.setSex(rs.getInt("sex"));
+                us.setStatus(rs.getBoolean("status"));
+                us.setPhone(rs.getString("phone"));
+                us.setRoleId(rs.getInt("role_id"));
+                us.setBirthday(rs.getString("birthday"));
+                us.setCreatedBy(rs.getInt("create_by"));
+                us.setCreatedDate(rs.getString("create_at"));
+                us.setUpdatedBy(rs.getInt("update_by"));
+                us.setUpdatedDate(rs.getString("update_at"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            DBConnection.closeConnection(conn, calla, rs);
+        }
+        return us;
+    }
+    
+      public boolean updateUser(User user){
+        Connection conn = null;
+        CallableStatement calla = null;
+        ResultSet rs = null;
+        boolean result = false;
+        
+        try {
+            conn = DBConnection.openConnection();
+            calla = conn.prepareCall("{call updateUser(?,?,?,?,?,?,?,?,?,?,?)}");
+            calla.setInt(1, user.getId());
+            calla.setString(2, user.getPassword());
+            calla.setInt(3, user.getRoleId());
+            calla.setString(4, user.getFirstName());
+            calla.setString(5, user.getLastName());
+            calla.setString(6, user.getDisplayName()); 
+            calla.setString(7, user.getEmail());
+            calla.setString(8, CommonFunc.convertStringDateUSUK(user.getBirthday()));
+            calla.setString(9, user.getPhone());
+            calla.setInt(10, user.getSex());
+            calla.setInt(11, user.getUpdatedBy());
+            calla.executeUpdate();
+            result = true;
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            DBConnection.closeConnection(conn, calla, rs);
+        }
+        return result;
+    }
+      
+    
+    public boolean deleteUser(int id) {
+        Connection con = null;
+        CallableStatement stm = null;
+        boolean result = false;
+        ResultSet rs = null;
+        try {
+            con = DBConnection.openConnection();
+            stm = con.prepareCall("{ call deleteUser(?)}");
+            stm.setInt(1, id);
+            stm.executeUpdate();
+            result = true;
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            DBConnection.closeConnection(con, stm, rs);
+        }
+        return result;
+    }
 }
