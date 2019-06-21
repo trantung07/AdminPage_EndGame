@@ -80,7 +80,7 @@ public class CommonFunc {
 
         return month + "/" + day + "/" + year;
     }
-    
+
     public static String convertStringDateUSUK(String dateInString) {
         String[] dateParts = dateInString.split("/");
         String month = dateParts[0];
@@ -88,5 +88,14 @@ public class CommonFunc {
         String year = dateParts[2];
 
         return day + "/" + month + "/" + year;
+    }
+
+    public static boolean isNumeric(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }

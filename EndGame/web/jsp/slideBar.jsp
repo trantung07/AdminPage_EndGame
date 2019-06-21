@@ -20,8 +20,8 @@
         
         <li><a href="javascript:;"><i class="fa fa-flag"></i> <span>Quản lý khóa học</span></a>
             <ul class='acc-menu'>
-                <li><a href="ui-typography.html">Danh sách</a></li>
-                <li><a href="ui-buttons.html">Thêm mới</a></li>
+                <li><a href="getAllCourse.htm">Danh sách</a></li>
+                <li><a href="initInsertCourse.htm">Thêm mới</a></li>
                 <li><a href="tables-basic.html">Tables</a></li>
                 <li><a href="form-layout.html">Forms</a></li>
                 <li><a href="ui-panels.html">Panels</a></li>

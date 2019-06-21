@@ -28,7 +28,7 @@
                             
                         </div>
                         <div class="container">
-                            <div class="panel panel-green">
+                            <div class="panel panel-success">
                                 <div class="panel-heading">
                                     <h4>Thêm mới người dùng</h4>
                                 </div>

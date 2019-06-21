@@ -35,6 +35,7 @@
                                         </div>
                                         <div class="panel-body">
                                             <div class="table-flipscroll">
+                                                <a href="initInsertUser.htm" class="btn btn-success" style="margin-bottom: 10px; width: 100px;"><span><i class="fa fa-plus-circle"></i></span> Thêm mới</a>
                                                 <table class="table">
                                                     <thead>
                                                         <tr>
