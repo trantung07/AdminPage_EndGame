@@ -6,8 +6,10 @@
 package com.end.controller;
 
 import com.end.dao.CourseDao;
+import com.end.dao.SubjectDao;
 import com.end.dao.UserDao;
 import com.end.entity.Course;
+import com.end.entity.Subject;
 import com.end.entity.User;
 import com.end.util.CommonFunc;
 import java.util.Date;
@@ -30,10 +32,12 @@ public class CourseController {
 
     private CourseDao courseDao;
     private UserDao userDao;
+    private SubjectDao subjectDao;
 
     public CourseController() {
         courseDao = new CourseDao();
         userDao = new UserDao();
+        subjectDao = new SubjectDao();
     }
 
     @RequestMapping(value = "getAllCourse")
@@ -58,6 +62,8 @@ public class CourseController {
         } else {
             Course course = new Course();
             model.addAttribute("newCourse", course);
+            List<Subject> list = subjectDao.getAllSubject();
+            model.addAttribute("listSubject", list);
             return "courseAdd";
         }
     }

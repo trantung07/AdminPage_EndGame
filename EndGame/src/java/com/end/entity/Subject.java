@@ -5,26 +5,20 @@
  */
 package com.end.entity;
 
-import java.util.List;
-
 /**
  *
  * @author Tran Tung
  */
-public class Course {
+public class Subject {
 
     private int id;
     private String name;
-    private String startDate;
-    private String endDate;
-    private int price;
     private String description;
     private boolean status;
     private int createdBy;
     private String createdAt;
     private int updatedBy;
     private String updatedAt;
-    public List<Course> listCourse;
 
     public int getId() {
         return id;
@@ -40,30 +34,6 @@ public class Course {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
-    }
-
-    public String getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
     }
 
     public String getDescription() {
@@ -114,12 +84,10 @@ public class Course {
         this.updatedAt = updatedAt;
     }
 
-    public List<Course> getListCourse() {
-        return listCourse;
+    @Override
+    public String toString() {
+        return this.name;
     }
 
-    public void setListCourse(List<Course> listCourse) {
-        this.listCourse = listCourse;
-    }
-
+    
 }
