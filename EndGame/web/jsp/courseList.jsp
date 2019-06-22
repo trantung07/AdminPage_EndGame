@@ -56,13 +56,13 @@
                                                             
                                                             <td>
                                                                 <div class="">
-                                                                    <a title="Xem chi tiết về khóa học ${cou.name}" class="blue" href="initDetailUser.htm?id=${user.id}">
+                                                                    <a title="Xem chi tiết về khóa học ${cou.name}" class="blue" href="initDetailCourse.htm?id=${cou.id}">
                                                                         <i class=" fa fa-search-plus bigger-250"></i>
                                                                     </a>
-                                                                    <a title="Chỉnh sửa" class="green" style="padding-left: 10px" href="initUpdateUser.htm?id=${user.id}">
+                                                                    <a title="Chỉnh sửa" class="green" style="padding-left: 10px" href="initUpdateCourse.htm?id=${cou.id}">
                                                                         <i class="ace-icon fa fa-pencil bigger-130"></i>
                                                                     </a>
-                                                                    <a title="Xóa" id="delBtn" class="red" style="padding-left: 10px" href="deleteUser.htm?id=${user.id}" >
+                                                                    <a title="Xóa" id="delBtn" class="red" style="padding-left: 10px" href="deleteCourse.htm?id=${cou.id}" >
                                                                         <i class="ace-icon fa fa-trash-o bigger-130"></i>
                                                                     </a>
                                                                 </div>

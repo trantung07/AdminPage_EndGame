@@ -22,10 +22,6 @@
             <ul class='acc-menu'>
                 <li><a href="getAllCourse.htm">Danh sách</a></li>
                 <li><a href="initInsertCourse.htm">Thêm mới</a></li>
-                <li><a href="tables-basic.html">Tables</a></li>
-                <li><a href="form-layout.html">Forms</a></li>
-                <li><a href="ui-panels.html">Panels</a></li>
-                <li><a href="ui-images.html">Images</a></li>
             </ul>
         </li>
         <li><a href="javascript:;"><i class="fa fa-tasks"></i> <span>UI Components</span> <span class="badge badge-info">12</span></a>

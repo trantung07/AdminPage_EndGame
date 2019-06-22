@@ -10,6 +10,7 @@ import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import org.springframework.util.StringUtils;
 
 /**
  *
@@ -73,6 +74,9 @@ public class CommonFunc {
     }
 
     public static String convertStringDateUKUS(String dateInString) {
+        if(StringUtils.isEmpty(dateInString)){
+            return "";
+        }
         String[] dateParts = dateInString.split("/");
         String day = dateParts[0];
         String month = dateParts[1];
@@ -82,6 +86,9 @@ public class CommonFunc {
     }
 
     public static String convertStringDateUSUK(String dateInString) {
+        if(StringUtils.isEmpty(dateInString)){
+            return "";
+        }
         String[] dateParts = dateInString.split("/");
         String month = dateParts[0];
         String day = dateParts[1];
