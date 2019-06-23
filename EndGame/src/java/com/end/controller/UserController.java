@@ -48,9 +48,10 @@ public class UserController {
             return "login";
         } else {
             String page = request.getParameter("page") != null ? request.getParameter("page") : "1";
+            String keyword = request.getParameter("username") != null ? request.getParameter("username") : "";
             int pageInt = Integer.parseInt(page);
             int sizeRowofPage = 4;// số sản phẩm trên 1 trang
-            HashMap map1 = userDao.getDataPagination(pageInt, sizeRowofPage);
+            HashMap map1 = userDao.getDataPagination(pageInt, sizeRowofPage, keyword);
 
             String url = (String) map1.get("url");
             List<User> userPaging = new ArrayList<>();
@@ -81,19 +82,30 @@ public class UserController {
             }
 
             List<Role> listRole = userDao.getAllRole();
-            List<User> list = userDao.getAllUser();
+            List<User> list = userDao.getAllUser(keyword);
             int startIndex = 1 + sizeRowofPage * (pageInt -1);
+            
+            if(userPaging.isEmpty()){
+                startIndex = 0;
+            }
             int endIndex = sizeRowofPage * pageInt;
             if(endIndex > list.size()){
                 endIndex = list.size();
             }
+            
+            User user = new User();
+            user.setUsername(keyword);
+            model.addAttribute("searchUser", user);
             model.addAttribute("startIndex", startIndex);
             model.addAttribute("endIndex", endIndex);
             model.addAttribute("url", url);
             model.addAttribute("size", list.size());
             model.addAttribute("roleList", listRole);
             model.addAttribute("userList", userPaging);
-            
+            if (keyword.length() > 0) {
+                String text = "với từ khóa tìm kiếm <span style=\"font-weight: bold\">" + keyword + "</span>";
+                model.addAttribute("keySearch", text);
+            }
             return "userList";
         }
     }

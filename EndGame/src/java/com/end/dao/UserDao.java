@@ -62,14 +62,15 @@ public class UserDao {
         return us;
     }
 
-    public List<User> getAllUser() {
+    public List<User> getAllUser(String keyword) {
         Connection con = null;
         CallableStatement stm = null;
         ResultSet rs = null;
         List<User> list = new ArrayList<>();
         con = DBConnection.openConnection();
         try {
-            stm = con.prepareCall("{ call getActiveUsers()}");
+            stm = con.prepareCall("{ call getActiveUsers(?)}");
+            stm.setString(1, keyword);
             rs = stm.executeQuery();
 
             while (rs.next()) {
@@ -272,8 +273,8 @@ public class UserDao {
         return result;
     }
     
-    public HashMap getDataPagination(int page, int pageSize) {
-        HashMap map1 = Pagination.getDataForPagination(page, pageSize, "tbl_user", "id", "getAllUser.htm");
+    public HashMap getDataPagination(int page, int pageSize, String keyword) {
+        HashMap map1 = Pagination.getDataForPagination(page, pageSize, "tbl_user", "id", "getAllUser.htm", keyword);
         return map1;
     }
 }

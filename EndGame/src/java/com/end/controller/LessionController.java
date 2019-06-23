@@ -42,16 +42,17 @@ public class LessionController {
     }
 
     @RequestMapping(value = "getAllLession")
-    public String getAllLession( Model model, HttpSession session, HttpServletRequest request) {
+    public String getAllLession(Model model, HttpSession session, HttpServletRequest request) {
         if (session.getAttribute("username") == null) {
             User user = new User();
             model.addAttribute("user", user);
             return "login";
         } else {
             String page = request.getParameter("page") != null ? request.getParameter("page") : "1";
+            String keyword = request.getParameter("name") != null ? request.getParameter("name") : "";
             int pageInt = Integer.parseInt(page);
             int sizeRowofPage = 4;// số sản phẩm trên 1 trang
-            HashMap map1 = lessionDao.getDataPagination(pageInt, sizeRowofPage);
+            HashMap map1 = lessionDao.getDataPagination(pageInt, sizeRowofPage, keyword);
 
             String url = (String) map1.get("url");
             List<Lession> listLession = new ArrayList<>();
@@ -73,19 +74,31 @@ public class LessionController {
                 CallableStatement callSt = (CallableStatement) map1.get("callSt");
                 DBConnection.closeConnection(conn, callSt, rs);
             }
-            List<Lession> list = lessionDao.getAllLession();
+            List<Lession> list = lessionDao.getAllLession(keyword);
             List<Subject> listSub = subjectDao.getAllSubject();
-            int startIndex = 1 + sizeRowofPage * (pageInt -1);
-            int endIndex = sizeRowofPage * pageInt;
-            if(endIndex > list.size()){
-                endIndex = list.size();
+            int startIndex = 1 + sizeRowofPage * (pageInt - 1);
+            if(listLession.isEmpty()){
+                startIndex = 0;
             }
+            int endIndex = sizeRowofPage * pageInt;
+
+            if (endIndex > list.size()) {
+                 endIndex = list.size();
+            }
+            Lession les = new Lession();
+            les.setName(keyword);
+            model.addAttribute("searchLession", les);
             model.addAttribute("startIndex", startIndex);
             model.addAttribute("endIndex", endIndex);
             model.addAttribute("url", url);
             model.addAttribute("size", list.size());
             model.addAttribute("lessionList", listLession);
             model.addAttribute("subjectList", listSub);
+            
+            if (keyword.length() > 0) {
+                String text = "với từ khóa tìm kiếm <span style=\"font-weight: bold\">" + keyword + "</span>";
+                model.addAttribute("keySearch", text);
+            }
             return "lessionList";
         }
     }

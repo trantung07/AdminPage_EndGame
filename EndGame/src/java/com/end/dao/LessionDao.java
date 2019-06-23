@@ -24,14 +24,15 @@ import java.util.logging.Logger;
  */
 public class LessionDao {
 
-    public List<Lession> getAllLession() {
+    public List<Lession> getAllLession(String key) {
         Connection con = null;
         CallableStatement stm = null;
         ResultSet rs = null;
         List<Lession> list = new ArrayList<>();
         con = DBConnection.openConnection();
         try {
-            stm = con.prepareCall("{ call getActiveLession()}");
+            stm = con.prepareCall("{ call getActiveLession(?)}");
+            stm.setString(1, key);
             rs = stm.executeQuery();
 
             while (rs.next()) {
@@ -73,8 +74,8 @@ public class LessionDao {
         return result;
     }
     
-    public HashMap getDataPagination(int page, int pageSize) {
-        HashMap map1 = Pagination.getDataForPagination(page, pageSize, "tbl_lesson", "id", "getAllLession.htm");
+    public HashMap getDataPagination(int page, int pageSize, String keyword) {
+        HashMap map1 = Pagination.getDataForPagination(page, pageSize, "tbl_lesson", "id", "getAllLession.htm", keyword);
         return map1;
     }
 }

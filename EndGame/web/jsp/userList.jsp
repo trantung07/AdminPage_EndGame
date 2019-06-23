@@ -6,6 +6,7 @@
 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,21 +37,28 @@
                                         <div class="panel-body">
                                             <div class="table-flipscroll">
                                                 <a href="initInsertUser.htm" class="btn btn-success" style="margin-bottom: 10px; width: 100px;"><span><i class="fa fa-plus-circle"></i></span> Thêm mới</a>
-                                                <p><div class="pagination1">${url}</div><span style="float: right; font-size: 13px;">Hiển thị từ 
-                                                    <span style="font-weight: bold">${startIndex}</span> - <span style="font-weight: bold">${endIndex}</span> trên tổng số <span style="font-weight: bold">${size}</span> người dùng</span></p>
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th style="padding-right:60px">Họ tên</th>
-                                                            <th>Tài khoản</th>
-                                                            <th>Tên hiển thị</th>
-                                                            <th>Role</th>
-                                                            <th>Ngày sinh</th>
-                                                            <th>Giới tính</th>
-                                                            <th></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
+                                                        <f:form class="form-horizontal" action="getAllUser.htm" commandName="searchUser" method="get">
+                                                            <label for="name" class="col-sm-3 control-label" style="font-weight: bold">Tìm kiếm</label>
+                                                            <div class="col-sm-6">
+                                                                <f:input type="text" id="username" placeholder="Nhập tên tài khoản để tìm kiếm" class="form-control col-md-7 col-xs-12" path="username" />
+                                                            </div>
+                                                            <span><button id="btnSave" type="submit" class="btn btn-success">Tìm kiếm</button></span>
+                                                        </f:form>
+                                            <p><div class="pagination1">${url}</div><span style="float: right; font-size: 13px;">Hiển thị từ 
+                                                <span style="font-weight: bold">${startIndex}</span> - <span style="font-weight: bold">${endIndex}</span> trên tổng số <span style="font-weight: bold">${size}</span> người dùng ${keySearch}</span></p>
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="padding-right:60px">Họ tên</th>
+                                                        <th>Tài khoản</th>
+                                                        <th>Tên hiển thị</th>
+                                                        <th>Role</th>
+                                                        <th>Ngày sinh</th>
+                                                        <th>Giới tính</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
                                                     <c:forEach items="${userList}" var="user">
                                                         <tr>
                                                             <td align="left"><i>${user.firstName} ${user.lastName}</i></td>
@@ -86,8 +94,8 @@
                                                                         </a>
                                                                         <c:if test="${sessionScope.id != user.id}">
                                                                             <a title="Xóa" id="delBtn" class="red" style="padding-left: 10px" href="deleteUser.htm?id=${user.id}" >
-                                                                            <i class="ace-icon fa fa-trash-o bigger-130"></i>
-                                                                        </a>
+                                                                                <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                                                                            </a>
                                                                         </c:if>
                                                                     </c:if>
                                                                 </div>
