@@ -43,8 +43,8 @@ public class CourseController {
     @RequestMapping(value = "getAllCourse")
     public String getAllCourse(Model model, HttpSession session) {
         if (session.getAttribute("username") == null) {
-            Course course = new Course();
-            model.addAttribute("course", course);
+            User user = new User();
+            model.addAttribute("user", user);
             return "login";
         } else {
             List<Course> list = courseDao.getAllCourse();

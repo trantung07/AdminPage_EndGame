@@ -37,6 +37,7 @@
     <link rel='stylesheet' type='text/css' href='/EndGame/jsp/assets/plugins/form-markdown/css/bootstrap-markdown.min.css' /> 
     <link rel='stylesheet' type='text/css' href='/EndGame/jsp/assets/plugins/codeprettifier/prettify.css' /> 
     <link rel='stylesheet' type='text/css' href='/EndGame/jsp/assets/plugins/form-toggle/toggles.css' />
+    <link rel='stylesheet' type='text/css' href='/EndGame/jsp/assets/css/custom.css' />
     <!--
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>

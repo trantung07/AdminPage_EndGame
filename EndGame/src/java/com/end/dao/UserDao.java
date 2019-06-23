@@ -9,11 +9,13 @@ import com.end.entity.Role;
 import com.end.entity.User;
 import com.end.util.CommonFunc;
 import com.end.util.DBConnection;
+import com.end.util.Pagination;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -81,11 +83,6 @@ public class UserDao {
                 us.setEmail(rs.getString("email"));
                 us.setBirthday(rs.getString("birthday"));
                 us.setSex(rs.getInt("sex"));
-
-                Role role = new Role();
-                role.setId(rs.getInt("role_id"));
-                role.setRoleName(rs.getString("role_name"));
-//                us.setRole(role);
                 us.setRoleId(rs.getInt("role_id"));
                 us.setStatus(rs.getBoolean("status"));
                 list.add(us);
@@ -273,5 +270,10 @@ public class UserDao {
             DBConnection.closeConnection(con, stm, rs);
         }
         return result;
+    }
+    
+    public HashMap getDataPagination(int page, int pageSize) {
+        HashMap map1 = Pagination.getDataForPagination(page, pageSize, "tbl_user", "id", "getAllUser.htm");
+        return map1;
     }
 }

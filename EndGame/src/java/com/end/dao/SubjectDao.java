@@ -5,7 +5,6 @@
  */
 package com.end.dao;
 
-import com.end.entity.Course;
 import com.end.entity.Subject;
 import com.end.util.DBConnection;
 import java.sql.CallableStatement;

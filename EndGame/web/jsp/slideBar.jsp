@@ -41,11 +41,10 @@
                 <li><a href="ui-tour.html">Tour</a></li>
             </ul>
         </li>
-        <li><a href="javascript:;"><i class="fa fa-table"></i> <span>Advanced Tables</span></a>
+        <li><a href="javascript:;"><i class="fa fa-table"></i> <span>Quản lý bài học</span></a>
             <ul class="acc-menu">
-                <li><a href="tables-data.html">Data Tables</a></li>
-                <li><a href="tables-responsive.html">Responsive Tables</a></li>
-                <li><a href="tables-editable.html">Editable Tables</a></li>
+                <li><a href="getAllLession.htm">Danh sách</a></li>
+                <li><a href="initInsertLession.htm">Thêm mới</a></li>
             </ul>
         </li>
         <li><a href="javascript:;"><i class="fa fa-pencil"></i> <span>Advanced Forms</span><span class="badge badge-primary">5</span></a>

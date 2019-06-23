@@ -1,0 +1,29 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 23-Jun-2019, 13:58:18
+    Author     : Tran Tung
+*/
+.pagination1 {
+    display: inline-block;
+}
+
+.pagination1 a {
+    border: solid 1px #0088CC;
+    color: black;
+    float: left;
+    padding: 8px 12px;
+    text-decoration: none;
+}
+
+.pagination1 a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.pagination1 a:hover:not(.active) {background-color: #ddd;}
+
+
