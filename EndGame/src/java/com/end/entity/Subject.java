@@ -14,6 +14,7 @@ public class Subject {
     private int id;
     private String name;
     private String description;
+    private int courseId;
     private boolean status;
     private int createdBy;
     private String createdAt;
@@ -42,6 +43,14 @@ public class Subject {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
     }
 
     public boolean isStatus() {
@@ -89,5 +98,4 @@ public class Subject {
         return this.name;
     }
 
-    
 }
