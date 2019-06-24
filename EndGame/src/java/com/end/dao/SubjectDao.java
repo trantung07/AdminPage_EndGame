@@ -81,6 +81,31 @@ public class SubjectDao {
         return s;
     }
     
+    
+    
+    public boolean insertSubject(Subject subject) {
+        Connection con = null;
+        CallableStatement stm = null;
+        boolean result = false;
+        ResultSet rs = null;
+        try {
+            con = DBConnection.openConnection();
+            stm = con.prepareCall("{ call insertSubject(?,?,?,?,?)}");
+            stm.setString(1, subject.getName());
+            stm.setString(2, subject.getDescription());
+            stm.setInt(3, subject.getCourseId());
+            stm.setInt(4, subject.getCreatedBy());
+            stm.setInt(5, subject.getUpdatedBy());
+            stm.executeUpdate();
+            result = true;
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            DBConnection.closeConnection(con, stm, rs);
+        }
+        return result;
+    }
+    
     public boolean updateSubject(Subject subject){
         Connection conn = null;
         CallableStatement calla = null;

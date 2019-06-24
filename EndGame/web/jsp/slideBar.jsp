@@ -27,7 +27,7 @@
         <li><a href="javascript:;"><i class="fa fa-tasks"></i> <span>Quản lý môn học</span></a>
             <ul class="acc-menu">
                 <li><a href="getAllSubject.htm">Danh sách</a></li>
-                <li><a href="ui-modals.html">Thêm mới</a></li>
+                <li><a href="initInsertSubject.htm">Thêm mới</a></li>
                 
             </ul>
         </li>

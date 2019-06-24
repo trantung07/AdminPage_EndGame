@@ -106,6 +106,55 @@ public class SubjectController {
     }
     
     
+    @RequestMapping(value = "initInsertSubject")
+    public String initInsertUser(Model model, HttpSession session) {
+        if (session.getAttribute("username") == null) {
+            User user = new User();
+            model.addAttribute("user", user);
+            return "login";
+        } else {
+            Subject subject = new Subject();
+            List<Course> listCourse = new CourseDao().getAllCourse();
+            model.addAttribute("listCourse", listCourse);
+            model.addAttribute("newSubject", subject);
+
+            return "subjectAdd";
+        }
+    }
+    
+    @RequestMapping(value = "insertSubject", method = RequestMethod.POST)
+    public String insertUser(@ModelAttribute("newSubject") Subject subject, Model model, HttpSession session) {
+        List<Course> listCourse = new CourseDao().getAllCourse();
+        model.addAttribute("listCourse", listCourse);
+        model.addAttribute("message", "");
+        if (StringUtils.isEmpty(subject.getName())) {
+            model.addAttribute("message", "Hãy nhập tên môn học");
+            model.addAttribute("errorClass", "has-error");
+            return "subjectAdd";
+        }
+        
+        if (StringUtils.isEmpty(subject.getDescription())) {
+            model.addAttribute("message", "Hãy nhập mô tả");
+            model.addAttribute("errFirtName", "has-error");
+            return "subjectAdd";
+        }
+
+      
+
+        int id = (int) session.getAttribute("id");
+        subject.setUpdatedBy(id);
+        subject.setCreatedBy(id);
+        boolean result = subjectDao.insertSubject(subject);
+        if (result) {
+            return "redirect:getAllSubject.htm";
+        } else {
+            model.addAttribute("message", "Thêm mới không thành công.");
+             model.addAttribute("listCourse", listCourse);
+            return "subjectAdd";
+        }
+    }
+    
+    
     @RequestMapping(value = "initDetailSubject")
     public String initDetailUser(@RequestParam("id") int id, Model model) {
         Subject subject = subjectDao.getSubjectById(id);
