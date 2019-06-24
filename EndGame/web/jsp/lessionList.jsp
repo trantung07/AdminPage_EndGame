@@ -69,13 +69,13 @@
                                                             </c:forEach>
                                                             <td>
                                                                 <div class="">
-                                                                    <a title="Xem chi tiết về bài học ${less.name}" class="blue" href="initDetailLession.htm?id=${cou.id}">
+                                                                    <a title="Xem chi tiết về bài học ${less.name}" class="blue" href="initDetailLession.htm?id=${less.id}">
                                                                         <i class=" fa fa-search-plus bigger-250"></i>
                                                                     </a>
-                                                                    <a title="Chỉnh sửa" class="green" style="padding-left: 10px" href="initUpdateLession.htm?id=${cou.id}">
+                                                                    <a title="Chỉnh sửa" class="green" style="padding-left: 10px" href="initUpdateLession.htm?id=${less.id}">
                                                                         <i class="ace-icon fa fa-pencil bigger-130"></i>
                                                                     </a>
-                                                                    <a title="Xóa" id="delBtn" class="red" style="padding-left: 10px" href="deleteLession.htm?id=${cou.id}" >
+                                                                    <a title="Xóa" id="delBtn" class="red" style="padding-left: 10px" href="deleteLession.htm?id=${less.id}" >
                                                                         <i class="ace-icon fa fa-trash-o bigger-130"></i>
                                                                     </a>
                                                                 </div>

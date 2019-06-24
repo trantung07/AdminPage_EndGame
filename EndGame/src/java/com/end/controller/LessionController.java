@@ -7,6 +7,7 @@ package com.end.controller;
 
 import com.end.dao.LessionDao;
 import com.end.dao.SubjectDao;
+import com.end.dao.UserDao;
 import com.end.entity.Lession;
 import com.end.entity.Subject;
 import com.end.entity.User;
@@ -25,6 +26,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -35,10 +37,12 @@ public class LessionController {
 
     private SubjectDao subjectDao;
     private LessionDao lessionDao;
+    private UserDao userDao;
 
     public LessionController() {
         subjectDao = new SubjectDao();
         lessionDao = new LessionDao();
+        userDao = new UserDao();
     }
 
     @RequestMapping(value = "getAllLession")
@@ -140,6 +144,73 @@ public class LessionController {
         } else {
             model.addAttribute("message", "Thêm mới không thành công.");
             return "lessionAdd";
+        }
+    }
+    
+    @RequestMapping(value = "initUpdateLession")
+    public String initUpdateLession(@RequestParam("id") int id, Model model, HttpSession session) {
+        if (session.getAttribute("username") == null) {
+            User user = new User();
+            model.addAttribute("user", user);
+            return "login";
+        } else {
+            Lession lession = lessionDao.getLessionById(id);
+            model.addAttribute("lessionUpdate", lession);
+            List<Subject> list = subjectDao.getAllSubject();
+            model.addAttribute("listSubject", list);
+            return "lessionUpdate";
+        }
+    }
+    
+    @RequestMapping(value = "updateLession", method = RequestMethod.POST)
+    public String updateLession(@ModelAttribute("lessionUpdate") Lession lession, Model model, HttpSession session) {
+        if (session.getAttribute("username") == null) {
+            User user = new User();
+            model.addAttribute("user", user);
+            return "login";
+        }
+        if (StringUtils.isEmpty(lession.getName())) {
+            model.addAttribute("message", "Hãy nhập tên khóa học");
+            model.addAttribute("errorName", "has-error");
+            List<Subject> list = subjectDao.getAllSubject();
+            model.addAttribute("listSubject", list);
+            return "lessionUpdate";
+        }
+
+        int id = (int) session.getAttribute("id");
+        lession.setUpdatedBy(id);
+        boolean result = lessionDao.updateLession(lession);
+        if (result) {
+            return "redirect:getAllLession.htm";
+        } else {
+            model.addAttribute("message", "Thêm mới không thành công.");
+            return "lessionUpdate";
+        }
+    }
+    
+    @RequestMapping(value = "initDetailLession")
+    public String initDetailLession(@RequestParam("id") int id, Model model) {
+        Lession lession =  lessionDao.getLessionById(id);
+        if(lession.getName() == null){
+            return "404-page";
+        }
+
+        model.addAttribute("lession", lession);
+        User userCreated =  userDao.getUserById(lession.getCreatedBy());
+        User userUpdated =  userDao.getUserById(lession.getUpdatedBy());
+        model.addAttribute("userCreated", userCreated);
+        model.addAttribute("userUpdated", userUpdated);
+        return "lessionDetail";
+    }
+    
+    @RequestMapping(value = "deleteLession")
+    public String deleteLession(@RequestParam("id") int id, HttpSession session) {
+        int userId = (int) session.getAttribute("id");
+        boolean result = lessionDao.deleteLession(id, userId);
+        if (result) {
+            return "redirect:getAllLession.htm";
+        } else {
+            return "500-page";
         }
     }
 }
