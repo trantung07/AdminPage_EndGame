@@ -11,7 +11,7 @@ package com.end.entity;
  */
 public class Subject {
 
-    private int id;
+    private int id;  
     private String name;
     private String description;
     private int courseId;
