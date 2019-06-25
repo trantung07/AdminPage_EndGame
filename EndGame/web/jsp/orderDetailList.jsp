@@ -1,15 +1,16 @@
 <%-- 
-    Document   : subjectList
-    Created on : Jun 25, 2019, 12:31:49 AM
+    Document   : orderDetailList
+    Created on : Jun 26, 2019, 2:51:10 AM
     Author     : hung
 --%>
+
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-    <title>Danh sách Môn Học</title>
+    <title>Chi tiết đơn hàng</title>
     <jsp:include page="library.jsp"></jsp:include>
         <body class="">
         <jsp:include page="header.jsp"></jsp:include>
@@ -21,9 +22,9 @@
                     <div id='wrap'>
                         <div id="page-heading">
                             <ol class="breadcrumb">
-                                <li class='active'><a href="#">Quản lý Môn Học</a></li>
+                                <li class='active'><a href="#">Chi tiết đơn hàng</a></li>
                             </ol>
-                            <h1>Danh sách Môn Học</h1>
+                            <h1>Chi tiết đơn hàng</h1>
                         </div>
                         <div class="container">
                             <div class="row">
@@ -34,50 +35,40 @@
 
                                         </div>
                                         <div class="panel-body">
-                                            <div class="table-flipscroll">
-                                                <a href="initInsertSubject.htm" class="btn btn-success" style="margin-bottom: 10px; width: 100px;"><span><i class="fa fa-plus-circle"></i></span> Thêm mới</a>
-                                                        
-                                            <p><div class="pagination1">${url}</div>
-                                            <span style="float: right; font-size: 13px;">Hiển thị từ 
+                                            <div class="table-flipscroll">      
+                                            <p><div class="pagination1">${url}</div><span style="float: right; font-size: 13px;">Hiển thị từ 
                                                 <span style="font-weight: bold">${startIndex}</span> - <span style="font-weight: bold">${endIndex}</span> trên tổng số <span style="font-weight: bold">${size}</span> người dùng ${keySearch}</span></p>
                                             <table class="table">
                                                 <thead>
                                                     <tr>
-                                                        <th style="padding-right:60px">Tên môn</th>
-                                                        <th>Mô tả</th>
-                                                        <th>Khóa học</th>
-                                                        <th></th>
+                                                        <th style="padding-right:30px">Mã đơn hàng</th>
+                                                        <th>Tên khóa học</th>
+                                                        <th>Giá tiền</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <c:forEach items="${SubjectList}" var="subject">
+                                                        <c:forEach items="${ListOrderDetail}" var="orderDetail">
                                                         <tr>
-                                                            <td align="left"><i>${subject.name}</i></td>
-                                                            <td>${subject.description}</td>
-                                                            <c:forEach items="${CourseList}" var="course">
-                                                                <c:if test="${course.id == subject.courseId}">
-                                                                    <td>${course.name}</td>
+                                                            <td align="left"><i>${orderDetail.ordersId}</i></td>
+                                                            <c:forEach items="${listCourse}" var="c">
+                                                                <c:if test="${c.id == orderDetail.coursesId}">
+                                                                    <td>${c.name}</td>
+                                                                    <td>${c.price}</td>
                                                                 </c:if>
-                                                            </c:forEach>         
-                                                            <td>
-                                                               <div class="">
-                                                                    <a title="Xem chi tiết về môn học ${subject.name}" class="blue" href="initDetailSubject.htm?id=${subject.id}">
-                                                                        <i class=" fa fa-search-plus bigger-250"></i>
-                                                                    </a>
-                                                                    <a title="Chỉnh sửa" class="green" style="padding-left: 10px" href="initUpdateSubject.htm?id=${subject.id}">
-                                                                        <i class="ace-icon fa fa-pencil bigger-130"></i>
-                                                                    </a>
-                                                                    <a title="Xóa" id="delBtn" class="red" style="padding-left: 10px" href="deleteSubject.htm?id=${subject.id}" >
-                                                                        <i class="ace-icon fa fa-trash-o bigger-130"></i>
-                                                                    </a>
-                                                                </div>
-                                                            </td>
+                                                            </c:forEach>
                                                         </tr>
                                                     </c:forEach>
 
                                                 </tbody>
 
                                             </table>
+                                            
+                                        <div class="form-group right">
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <button class="btn btn-primary" type="button" onclick="history.go(-1)">Quay lại</button>
+                                            </div>
+                                        </div> 
+                                            
                                         </div>
                                     </div>
                                 </div>

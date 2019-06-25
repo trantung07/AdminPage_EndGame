@@ -37,17 +37,9 @@
                 <li><a href="initInsertLession.htm">Thêm mới</a></li>
             </ul>
         </li>
-        <li><a href="javascript:;"><i class="fa fa-pencil"></i> <span>Advanced Forms</span><span class="badge badge-primary">5</span></a>
+        <li><a href="javascript:;"><i class="fa fa-pencil"></i> <span>Quản lý đơn hàng</span></a>
             <ul class="acc-menu">
-                <li><a href="form-components.html">Components</a></li>
-                <li><a href="form-wizard.html">Wizards</a></li>
-                <li><a href="form-validation.html">Validation</a></li>
-                <li><a href="form-masks.html">Masks</a></li>
-                <li><a href="form-fileupload.html">Multiple File Uploads</a></li>
-                <li><a href="form-dropzone.html">Dropzone File Uploads</a></li>
-                <li><a href="form-ckeditor.html">WYSIWYG Editor</a></li>
-                <li><a href="form-xeditable.html">Inline Editor</a></li>
-                <li><a href="form-imagecrop.html">Image Cropping</a></li>
+                <li><a href="getAllOrder.htm">Danh sách</a></li>
             </ul>
         </li>
         <li><a href="javascript:;"><i class="fa fa-map-marker"></i> <span>Maps</span></a>

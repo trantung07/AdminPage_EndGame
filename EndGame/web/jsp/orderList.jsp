@@ -1,15 +1,16 @@
 <%-- 
-    Document   : subjectList
-    Created on : Jun 25, 2019, 12:31:49 AM
+    Document   : orderList
+    Created on : Jun 26, 2019, 12:10:04 AM
     Author     : hung
 --%>
+
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-    <title>Danh sách Môn Học</title>
+    <title>Danh sách đơn hàng</title>
     <jsp:include page="library.jsp"></jsp:include>
         <body class="">
         <jsp:include page="header.jsp"></jsp:include>
@@ -21,9 +22,9 @@
                     <div id='wrap'>
                         <div id="page-heading">
                             <ol class="breadcrumb">
-                                <li class='active'><a href="#">Quản lý Môn Học</a></li>
+                                <li class='active'><a href="#">Quản lý đơn hàng</a></li>
                             </ol>
-                            <h1>Danh sách Môn Học</h1>
+                            <h1>Danh sách đơn hàng</h1>
                         </div>
                         <div class="container">
                             <div class="row">
@@ -34,41 +35,36 @@
 
                                         </div>
                                         <div class="panel-body">
-                                            <div class="table-flipscroll">
-                                                <a href="initInsertSubject.htm" class="btn btn-success" style="margin-bottom: 10px; width: 100px;"><span><i class="fa fa-plus-circle"></i></span> Thêm mới</a>
-                                                        
-                                            <p><div class="pagination1">${url}</div>
-                                            <span style="float: right; font-size: 13px;">Hiển thị từ 
+                                            <div class="table-flipscroll">      
+                                            <p><div class="pagination1">${url}</div><span style="float: right; font-size: 13px;">Hiển thị từ 
                                                 <span style="font-weight: bold">${startIndex}</span> - <span style="font-weight: bold">${endIndex}</span> trên tổng số <span style="font-weight: bold">${size}</span> người dùng ${keySearch}</span></p>
                                             <table class="table">
                                                 <thead>
                                                     <tr>
-                                                        <th style="padding-right:60px">Tên môn</th>
-                                                        <th>Mô tả</th>
-                                                        <th>Khóa học</th>
+                                                        <th style="padding-right:30px">Mã đơn hàng</th>
+                                                        <th>Họ tên</th>
+                                                        <th>Tổng tiền</th>
+                                                        <th>Trạng thái</th>
                                                         <th></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <c:forEach items="${SubjectList}" var="subject">
+                                                    <c:forEach items="${OrderList}" var="order">
                                                         <tr>
-                                                            <td align="left"><i>${subject.name}</i></td>
-                                                            <td>${subject.description}</td>
-                                                            <c:forEach items="${CourseList}" var="course">
-                                                                <c:if test="${course.id == subject.courseId}">
-                                                                    <td>${course.name}</td>
+                                                            <td align="left"><i>${order.id}</i></td>
+                                                            <c:forEach items="${ListUser}" var="user">
+                                                                <c:if test="${user.id == order.usersId}">
+                                                                    <td>${user.username}</td>
                                                                 </c:if>
-                                                            </c:forEach>         
+                                                            </c:forEach>
+                                                            <td>${order.totalCost}</td>
+                                                            <c:if test="${order.status == true}">
+                                                                <td>hiện</td>
+                                                            </c:if>
                                                             <td>
                                                                <div class="">
-                                                                    <a title="Xem chi tiết về môn học ${subject.name}" class="blue" href="initDetailSubject.htm?id=${subject.id}">
+                                                                    <a title="Xem chi tiết về đơn hàng" class="blue" href="initDetailOrder.htm?id=${order.id}">
                                                                         <i class=" fa fa-search-plus bigger-250"></i>
-                                                                    </a>
-                                                                    <a title="Chỉnh sửa" class="green" style="padding-left: 10px" href="initUpdateSubject.htm?id=${subject.id}">
-                                                                        <i class="ace-icon fa fa-pencil bigger-130"></i>
-                                                                    </a>
-                                                                    <a title="Xóa" id="delBtn" class="red" style="padding-left: 10px" href="deleteSubject.htm?id=${subject.id}" >
-                                                                        <i class="ace-icon fa fa-trash-o bigger-130"></i>
                                                                     </a>
                                                                 </div>
                                                             </td>

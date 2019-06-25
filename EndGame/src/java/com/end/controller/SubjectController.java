@@ -54,7 +54,7 @@ public class SubjectController {
             String keyword = request.getParameter("username") != null ? request.getParameter("username") : "";
             int pageInt = Integer.parseInt(page);
             int sizeRowofPage = 4;// số sản phẩm trên 1 trang
-            HashMap map1 = subjectDao.getDataPagination(pageInt, sizeRowofPage, null);
+            HashMap map1 = subjectDao.getDataPagination(pageInt, sizeRowofPage, keyword);
 
             String url = (String) map1.get("url");
             List<Subject> userPaging = new ArrayList<>();
