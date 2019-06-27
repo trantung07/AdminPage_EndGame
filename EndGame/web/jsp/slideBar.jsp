@@ -24,7 +24,7 @@
                 <li><a href="initInsertCourse.htm">Thêm mới</a></li>
             </ul>
         </li>
-        <li><a href="javascript:;"><i class="fa fa-tasks"></i> <span>UI Components</span> <span class="badge badge-info">12</span></a>
+        <li><a href="javascript:;"><i class="fa fa-tasks"></i> <span>UI Components</span></a>
             <ul class="acc-menu">
                 <li><a href="ui-tiles.html">Tiles</a></li>
                 <li><a href="ui-modals.html">Modals &amp; Bootbox</a></li>
@@ -47,79 +47,13 @@
                 <li><a href="initInsertLession.htm">Thêm mới</a></li>
             </ul>
         </li>
-        <li><a href="javascript:;"><i class="fa fa-pencil"></i> <span>Advanced Forms</span><span class="badge badge-primary">5</span></a>
+        <li><a href="javascript:;"><i class="fa fa-pencil"></i> <span>Quản lý học liệu</span></a>
             <ul class="acc-menu">
-                <li><a href="form-components.html">Components</a></li>
-                <li><a href="form-wizard.html">Wizards</a></li>
-                <li><a href="form-validation.html">Validation</a></li>
-                <li><a href="form-masks.html">Masks</a></li>
-                <li><a href="form-fileupload.html">Multiple File Uploads</a></li>
-                <li><a href="form-dropzone.html">Dropzone File Uploads</a></li>
-                <li><a href="form-ckeditor.html">WYSIWYG Editor</a></li>
-                <li><a href="form-xeditable.html">Inline Editor</a></li>
-                <li><a href="form-imagecrop.html">Image Cropping</a></li>
-            </ul>
-        </li>
-        <li><a href="javascript:;"><i class="fa fa-map-marker"></i> <span>Maps</span></a>
-            <ul class="acc-menu">
-                <li><a href="maps-google.html">Google Maps</a></li>
-                <li><a href="maps-vector.html">Vector Maps</a></li>
-            </ul>
-        </li>
-        <li><a href="javascript:;"><i class="fa fa-bar-chart-o"></i> <span>Charts</span></a>
-            <ul class="acc-menu">
-                <li><a href="charts-flot.html">Extensible</a></li>
-                <li><a href="charts-svg.html">Interactive</a></li>
-                <li><a href="charts-canvas.html">Lightweight</a></li>
-                <li><a href="charts-inline.html">Inline</a></li>
-            </ul>
-        </li>
-        <li><a href="calendar.html"><i class="fa fa-calendar"></i> <span>Calendar</span></a></li>
-        <li><a href="gallery.html"><i class="fa fa-camera"></i> <span> Gallery</span> </a></li>
-        <li><a href="javascript:;"><i class="fa fa-flag"></i> <span>Icons</span> <span class="badge badge-orange">2</span></a>
-            <ul class="acc-menu">
-                <li><a href="icons-fontawesome.html">Font Awesome</a></li>
-                <li><a href="icons-glyphicons.html">Glyphicons</a></li>
+                <li><a href="getAllCourseware.htm">Danh sách</a></li>
+                <li><a href="initInsertCourseware.htm">Thêm mới</a></li>
             </ul>
         </li>
         <li class="divider"></li>
-        <li><a href="javascript:;"><i class="fa fa-briefcase"></i> <span>Extras</span> <span class="badge badge-danger">1</span></a>
-            <ul class="acc-menu">
-                <li><a href="extras-timeline.html">Timeline</a></li>
-                <li><a href="extras-profile.html">Profile</a></li>
-                <li><a href="extras-inbox.html">Inbox</a></li>
-                <li><a href="extras-search.html">Search Page</a></li>
-                <li><a href="extras-chatroom.html">Chat Room</a></li>
-                <li><a href="extras-invoice.html">Invoice</a></li>
-                <li><a href="extras-registration.html">Registration</a></li>
-                <li><a href="extras-signupform.html">Sign Up</a></li>
-                <li><a href="extras-forgotpassword.html">Password Reset</a></li>
-                <li><a href="extras-login.html">Login 1</a></li>
-                <li><a href="extras-login2.html">Login 2</a></li>
-                <li><a href="extras-404.html">404 Page</a></li>
-                <li><a href="extras-500.html">500 Page</a></li>
-            </ul>
-        </li>
-        <li><a href="javascript:;"><i class="fa fa-sitemap"></i> <span>Unlimited Level Menu</span></a>
-            <ul class="acc-menu">
-                <li><a href="javascript:;">Menu Item 1</a></li>
-                <li><a href="javascript:;">Menu Item 2</a>
-                    <ul class="acc-menu">
-                        <li><a href="javascript:;">Menu Item 2.1</a></li>
-                        <li><a href="javascript:;">Menu Item 2.2</a>
-                            <ul class="acc-menu">
-                                <li><a href="javascript:;">Menu Item 2.2.1</a></li>
-                                <li><a href="javascript:;">Menu Item 2.2.2</a>
-                                    <ul class="acc-menu">
-                                        <li><a href="javascript:;">And deeper yet!</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
     </ul>
 
 </nav>
