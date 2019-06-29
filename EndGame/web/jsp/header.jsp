@@ -99,7 +99,7 @@
                         <li><a href="#">Account <i class="pull-right fa fa-cog"></i></a></li>
                         <li><a href="#">Help <i class="pull-right fa fa-question-circle"></i></a></li>
                         <li class="divider"></li>
-                        <li><a href="<%=request.getContextPath()%>/logout.htm" class="text-right">Sign Out</a></li>
+                        <li><a href="<%=request.getContextPath()%>/logout.htm" class="text-right">Đăng xuất</a></li>
                     </ul>
                 </li>
             </ul>

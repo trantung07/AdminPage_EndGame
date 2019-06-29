@@ -11,7 +11,6 @@ import com.end.dao.UserDao;
 import com.end.entity.Courseware;
 import com.end.entity.FileType;
 import com.end.entity.Lession;
-import com.end.entity.Subject;
 import com.end.entity.User;
 import com.end.util.DBConnection;
 import java.io.File;

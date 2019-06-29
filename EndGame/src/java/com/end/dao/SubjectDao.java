@@ -6,8 +6,6 @@
 package com.end.dao;
 
 import com.end.entity.Subject;
-import com.end.entity.User;
-import com.end.util.CommonFunc;
 import com.end.util.DBConnection;
 import com.end.util.Pagination;
 import java.sql.CallableStatement;
