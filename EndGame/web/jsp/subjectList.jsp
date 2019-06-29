@@ -21,9 +21,9 @@
                     <div id='wrap'>
                         <div id="page-heading">
                             <ol class="breadcrumb">
-                                <li class='active'><a href="#">Quản lý Môn Học</a></li>
+                                <li class='active'><a href="#">Trang chủ</a></li>
                             </ol>
-                            <h1>Danh sách Môn Học</h1>
+                            <h1>Quản lý môn học</h1>
                         </div>
                         <div class="container">
                             <div class="row">

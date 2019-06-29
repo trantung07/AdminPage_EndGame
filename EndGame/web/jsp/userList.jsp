@@ -22,9 +22,9 @@
                     <div id='wrap'>
                         <div id="page-heading">
                             <ol class="breadcrumb">
-                                <li class='active'><a href="#">Quản lý người dùng</a></li>
+                                <li class='active'><a href="#">Trang chủ</a></li>
                             </ol>
-                            <h1>Danh sách người dùng</h1>
+                            <h1>Quản lý người dùng</h1>
                         </div>
                         <div class="container">
                             <div class="row">

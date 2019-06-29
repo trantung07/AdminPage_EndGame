@@ -81,34 +81,4 @@
             <textarea name="" rows="2"></textarea>
         </div>
     </div>
-
-    <div id="widgetarea">
-        <div class="widget">
-            <div class="widget-heading">
-                <a href="javascript:;" data-toggle="collapse" data-target="#accsummary"><h4>Account Summary</h4></a>
-            </div>
-            <div class="widget-body collapse in" id="accsummary">
-                <div class="widget-block" style="background: #7ccc2e; margin-top:10px;">
-                    <div class="pull-left">
-                        <small>Current Balance</small>
-                        <h5>$71,182</h5>
-                    </div>
-                    <div class="pull-right"><div id="currentbalance"></div></div>
-                </div>
-                <div class="widget-block" style="background: #595f69;">
-                    <div class="pull-left">
-                        <small>Account Type</small>
-                        <h5>Business Plan A</h5>
-                    </div>
-                    <div class="pull-right">
-                        <small class="text-right">Monthly</small>
-                        <h5>$19<small>.99</small></h5>
-                    </div>
-                </div>
-                <span class="more"><a href="#">Upgrade Account</a></span>
-            </div>
-        </div>
-
-
-    </div>
 </div>
