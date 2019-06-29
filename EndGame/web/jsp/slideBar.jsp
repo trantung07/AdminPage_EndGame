@@ -37,11 +37,13 @@
                 <li><a href="initInsertLession.htm">Thêm mới</a></li>
             </ul>
         </li>
-        <li><a href="javascript:;"><i class="fa fa-pencil"></i> <span>Quản lý học liệu</span></a>
+        <li><a href="javascript:;"><i class="fa fa-book"></i> <span>Quản lý học liệu</span></a>
             <ul class="acc-menu">
                 <li><a href="getAllCourseware.htm">Danh sách</a></li>
                 <li><a href="initInsertCourseware.htm">Thêm mới</a></li>
-        <li><a href="javascript:;"><i class="fa fa-pencil"></i> <span>Quản lý đơn hàng</span></a>
+            </ul>
+        </li>
+        <li><a href="javascript:;"><i class="fa fa-truck"></i> <span>Quản lý đơn hàng</span></a>
             <ul class="acc-menu">
                 <li><a href="getAllOrder.htm">Danh sách</a></li>
             </ul>
