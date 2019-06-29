@@ -24,21 +24,11 @@
                 <li><a href="initInsertCourse.htm">Thêm mới</a></li>
             </ul>
         </li>
-        <li><a href="javascript:;"><i class="fa fa-tasks"></i> <span>UI Components</span></a>
+        <li><a href="javascript:;"><i class="fa fa-tasks"></i> <span>Quản lý môn học</span></a>
             <ul class="acc-menu">
-                <li><a href="ui-tiles.html">Tiles</a></li>
-                <li><a href="ui-modals.html">Modals &amp; Bootbox</a></li>
-                <li><a href="ui-progressbars.html">Progress Bars</a></li>
-                <li><a href="ui-paginations.html">Pagers &amp; Paginations</a></li>
-                <li><a href="ui-breadcrumbs.html">Breadcrumbs</a></li>
-                <li><a href="ui-labelsbadges.html">Labels &amp; Badges</a></li>
-                <li><a href="ui-alerts.html">Alerts &amp; Notificiations</a></li>
-                <li><a href="ui-sliders.html">Sliders &amp; Ranges</a></li>
-                <li><a href="ui-tabs.html">Tabs &amp; Accordions</a></li>
-                <li><a href="ui-carousel.html">Carousel</a></li>
-                <li><a href="ui-nestable.html">Nestable Lists</a></li>
-                <li><a href="ui-wells.html">Wells</a></li>
-                <li><a href="ui-tour.html">Tour</a></li>
+                <li><a href="getAllSubject.htm">Danh sách</a></li>
+                <li><a href="initInsertSubject.htm">Thêm mới</a></li>
+                
             </ul>
         </li>
         <li><a href="javascript:;"><i class="fa fa-table"></i> <span>Quản lý bài học</span></a>
@@ -51,6 +41,9 @@
             <ul class="acc-menu">
                 <li><a href="getAllCourseware.htm">Danh sách</a></li>
                 <li><a href="initInsertCourseware.htm">Thêm mới</a></li>
+        <li><a href="javascript:;"><i class="fa fa-pencil"></i> <span>Quản lý đơn hàng</span></a>
+            <ul class="acc-menu">
+                <li><a href="getAllOrder.htm">Danh sách</a></li>
             </ul>
         </li>
         <li class="divider"></li>

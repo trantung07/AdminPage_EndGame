@@ -11,11 +11,11 @@ package com.end.entity;
  */
 public class Subject {
 
-    private int id;
+    private int id;  
     private String name;
     private String description;
     private int courseId;
-    private boolean status;
+    private boolean delete;
     private int createdBy;
     private String createdAt;
     private int updatedBy;
@@ -53,12 +53,12 @@ public class Subject {
         this.courseId = courseId;
     }
 
-    public boolean isStatus() {
-        return status;
+    public boolean isdelete() {
+        return delete;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setdelete(boolean delete) {
+        this.delete = delete;
     }
 
     public int getCreatedBy() {
