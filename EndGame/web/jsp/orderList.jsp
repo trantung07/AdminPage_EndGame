@@ -59,8 +59,11 @@
                                                             </c:forEach>
                                                             <td>${order.totalCost}</td>
                                                             <c:if test="${order.status == true}">
-                                                                <td>hiện</td>
+                                                                <td>Thành công</td>
                                                             </c:if>
+                                                            <c:if test="${order.status == false}">
+                                                                <td>Đã hủy</td>
+                                                            </c:if>    
                                                             <td>
                                                                <div class="">
                                                                     <a title="Xem chi tiết về đơn hàng" class="blue" href="initDetailOrder.htm?id=${order.id}">

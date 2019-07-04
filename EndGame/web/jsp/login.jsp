@@ -62,9 +62,6 @@
                                 <f:input type="password" class="form-control" placeholder="Mật khẩu" path="password" id="password" />
                             </div>
                         </div>
-                        <div class="clearfix">
-                            <div class="pull-right"><label><input type="checkbox" checked> Remember Me</label></div>
-                        </div>
                         <button type="submit" class="btn btn-primary btn-block"><span>Đăng nhập</span>
                         </button>
                     </f:form>

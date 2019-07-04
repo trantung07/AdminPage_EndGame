@@ -356,19 +356,19 @@ public class CoursewareController {
     }
 
     private boolean checkFileTypeInput(String fileName, int type) {
-        if (type == 1 && fileName.substring(fileName.length() - 4).contains("mp4")) {
+        if (type == 1 && fileName.substring(fileName.length() - 4).toLowerCase().contains("mp4")) {
             return true;
         }
 
-        if (type == 2 && fileName.substring(fileName.length() - 4).equals("docx")) {
+        if (type == 2 && fileName.substring(fileName.length() - 4).toLowerCase().equals("docx")) {
             return true;
         }
 
-        if (type == 3 && fileName.substring(fileName.length() - 4).equals("xlxs")) {
+        if (type == 3 && fileName.substring(fileName.length() - 4).toLowerCase().equals("xlxs")) {
             return true;
         }
 
-        if (type == 4 && fileName.substring(fileName.length() - 4).equals("pptx")) {
+        if (type == 4 && fileName.substring(fileName.length() - 4).toLowerCase().equals("pptx")) {
             return true;
         }
 

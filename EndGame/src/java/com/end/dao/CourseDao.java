@@ -150,4 +150,32 @@ public class CourseDao {
         }
         return result;
     }
+    
+    public List<Course> getAllCourseLimit(){
+        Connection con = null;
+        CallableStatement stm = null;
+        ResultSet rs = null;
+        List<Course> list = new ArrayList<>();
+        con = DBConnection.openConnection();
+        try {
+            stm = con.prepareCall("{ call getLimitActiveCourse()}");
+            rs = stm.executeQuery();
+
+            while (rs.next()) {
+                Course course = new Course();
+                course.setId(rs.getInt("id"));
+                course.setName(rs.getString("name"));
+                course.setStartDate(rs.getString("start_date"));
+                course.setEndDate(rs.getString("end_date"));
+                course.setPrice(rs.getInt("course_price"));
+                list.add(course);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CourseDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            DBConnection.closeConnection(con, stm, rs);
+        }
+        
+        return list;
+    }
 }

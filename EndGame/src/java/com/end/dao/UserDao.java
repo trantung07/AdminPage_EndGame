@@ -273,6 +273,39 @@ public class UserDao {
         return result;
     }
     
+    public List<User> getAllUserLimit() {
+        Connection con = null;
+        CallableStatement stm = null;
+        ResultSet rs = null;
+        List<User> list = new ArrayList<>();
+        con = DBConnection.openConnection();
+        try {
+            stm = con.prepareCall("{ call getLimitActiveUsers()}");
+            rs = stm.executeQuery();
+
+            while (rs.next()) {
+                User us = new User();
+                us.setId(rs.getInt("id"));
+                us.setUsername(rs.getString("username"));
+                us.setPassword(rs.getString("password"));
+                us.setFirstName(rs.getString("first_name"));
+                us.setLastName(rs.getString("last_name"));
+                us.setDisplayName(rs.getString("display_name"));
+                us.setEmail(rs.getString("email"));
+                us.setBirthday(rs.getString("birthday"));
+                us.setSex(rs.getInt("sex"));
+                us.setRoleId(rs.getInt("role_id"));
+                us.setStatus(rs.getBoolean("status"));
+                list.add(us);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            DBConnection.closeConnection(con, stm, rs);
+        }
+        return list;
+    }
+    
     public HashMap getDataPagination(int page, int pageSize, String keyword) {
         HashMap map1 = Pagination.getDataForPagination(page, pageSize, "tbl_user", "id", "getAllUser.htm", keyword);
         return map1;

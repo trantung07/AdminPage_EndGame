@@ -95,7 +95,7 @@
                 </li>
                 <li class="userlinks">
                     <ul class="dropdown-menu">
-                        <li><a href="#">Chỉnh sửa tài khoản <i class="pull-right fa fa-pencil"></i></a></li>
+                        <li><a href="initUpdateUser.htm?id=<%=request.getSession().getAttribute("id")%>">Chỉnh sửa tài khoản <i class="pull-right fa fa-pencil"></i></a></li>
                         <li><a href="#">Account <i class="pull-right fa fa-cog"></i></a></li>
                         <li><a href="#">Help <i class="pull-right fa fa-question-circle"></i></a></li>
                         <li class="divider"></li>

@@ -5,8 +5,14 @@
  */
 package com.end.controller;
 
+import com.end.dao.CourseDao;
+import com.end.dao.OrderDao;
 import com.end.dao.UserDao;
+import com.end.entity.Course;
+import com.end.entity.Order;
+import com.end.entity.Role;
 import com.end.entity.User;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
@@ -15,7 +21,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -25,9 +30,13 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomeController {
 
     private UserDao userDao;
+    private CourseDao courseDao;
+    private OrderDao orderDao;
 
     public HomeController() {
         userDao = new UserDao();
+        courseDao = new CourseDao();
+        orderDao = new OrderDao();
     }
 
     @RequestMapping(value = "initLogin")
@@ -63,17 +72,26 @@ public class HomeController {
     }
 
     @RequestMapping(value = "homeBackend")
-    public ModelAndView homeBackend(HttpSession session) {
-        ModelAndView model;
+    public String homeBackend(HttpSession session, Model model) {
         if (session.getAttribute("username") != null) {
-            model = new ModelAndView("homePage");
-            return model;
+            List<User> listUser = userDao.getAllUserLimit();
+            List<Role> listRole = userDao.getAllRole();
+            model.addAttribute("userList", listUser);
+            model.addAttribute("roleList", listRole);
+            
+            List<User> listAUser = userDao.getAllUser("");
+            List<Order> listOrder = orderDao.getAllOrderLimit();
+            model.addAttribute("ListUser", listAUser);
+            model.addAttribute("OrderList", listOrder);
+            
+            List<Course> list = courseDao.getAllCourse();
+            model.addAttribute("courseList", list);
         } else {
-            model = new ModelAndView("login");
             User user = new User();
-            model.getModelMap().put("user", user);
+            model.addAttribute("user", user);
+            return "login";
         }
-        return model;
+        return "homePage";
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
