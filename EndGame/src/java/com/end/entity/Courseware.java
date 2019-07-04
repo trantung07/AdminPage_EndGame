@@ -16,6 +16,7 @@ public class Courseware {
     private int lessionId;
     private int type;
     private String link;
+    private String fileName;
     private String description;
     private boolean status;
     private int createdBy;
@@ -109,6 +110,14 @@ public class Courseware {
 
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
 }

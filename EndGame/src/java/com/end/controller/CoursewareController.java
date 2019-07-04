@@ -12,6 +12,7 @@ import com.end.entity.Courseware;
 import com.end.entity.FileType;
 import com.end.entity.Lession;
 import com.end.entity.User;
+import com.end.util.CommonFunc;
 import com.end.util.DBConnection;
 import java.io.File;
 import java.sql.CallableStatement;
@@ -160,10 +161,12 @@ public class CoursewareController {
                         model.addAttribute("listType", listType);
                         return "coursewareAdd";
                     }
-                    ware.setLink(fileItem.getName());
+                    ware.setFileName(fileItem.getName());
                     //upload to folder
                     file.add(fileItem.getName());
                     fileItem.write(new File(path + "/" + fileItem.getName()));
+                    String encode = CommonFunc.encodeBase64(path + "/" + fileItem.getName());
+                    ware.setLink(encode);
                 } else {
                     String name = fileItem.getFieldName();
                     String value = fileItem.getString("UTF-8");
@@ -194,7 +197,7 @@ public class CoursewareController {
             return "coursewareUpdate";
         }
 
-        if (!checkFileTypeInput(ware.getLink(), ware.getType())) {
+        if (!checkFileTypeInput(ware.getFileName(), ware.getType())) {
             model.addAttribute("message", "Hãy nhập đúng định dạng file");
             model.addAttribute("errorFile", "has-error");
             List<Lession> list = lessionDao.getAllLession("");
@@ -262,11 +265,13 @@ public class CoursewareController {
                         model.addAttribute("listType", listType);
                         return "coursewareUpdate";
                     }
-                    ware.setLink(fileItem.getName());
+                    ware.setFileName(fileItem.getName());
 
                     //upload to folder
                     file.add(fileItem.getName());
                     fileItem.write(new File(path + "/" + fileItem.getName()));
+                    String encode = CommonFunc.encodeBase64(path + "/" + fileItem.getName());
+                    ware.setLink(encode);
                 } else {
                     String name = fileItem.getFieldName();
                     String value = fileItem.getString("UTF-8");
@@ -304,7 +309,7 @@ public class CoursewareController {
             return "coursewareUpdate";
         }
         
-        if (!checkFileTypeInput(ware.getLink(), ware.getType())) {
+        if (!checkFileTypeInput(ware.getFileName(), ware.getType())) {
             model.addAttribute("message", "Hãy nhập đúng định dạng file");
             model.addAttribute("errorFile", "has-error");
             List<Lession> list = lessionDao.getAllLession("");
@@ -326,12 +331,15 @@ public class CoursewareController {
     }
 
     @RequestMapping(value = "initDetailCourseware")
-    public String initDetailCourseware(@RequestParam("id") int id, Model model) {
+    public String initDetailCourseware(@RequestParam("id") int id, Model model, HttpServletRequest request) {
         Courseware ware = wareDao.getCoursewareById(id);
         if (ware.getName() == null) {
             return "404-page";
         }
-
+        String path = request.getSession().getServletContext().getRealPath("/jsp/file/");
+        path = path.substring(0, path.indexOf("\\build"));
+        path = path + "\\web\\jsp\\file";
+        model.addAttribute("path", path+"\\"+ware.getLink());
         model.addAttribute("ware", ware);
         List<Lession> list = lessionDao.getAllLession("");
         model.addAttribute("listLession", list);

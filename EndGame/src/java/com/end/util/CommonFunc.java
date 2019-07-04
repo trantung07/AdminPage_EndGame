@@ -5,10 +5,17 @@
  */
 package com.end.util;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Base64;
 import java.util.Date;
 import org.springframework.util.StringUtils;
 
@@ -103,6 +110,47 @@ public class CommonFunc {
             return true;
         } catch (NumberFormatException e) {
             return false;
+        }
+    }
+    
+    public static String encodeBase64(String video){
+        File tempFile = new File(video);
+        String encodedString = null;
+
+        InputStream inputStream = null;
+        try {
+            inputStream = new FileInputStream(tempFile);
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        byte[] bytes;
+        byte[] buffer = new byte[8192];
+        int bytesRead;
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        try {
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                output.write(buffer, 0, bytesRead);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        bytes = output.toByteArray();
+        encodedString = Base64.getEncoder().encodeToString(bytes);
+        return encodedString;
+    }
+    
+    public static void  decodeBase64(String encodedString, String video){
+        byte[] decodedBytes = Base64.getDecoder().decode(encodedString.getBytes());
+        String a = new String(decodedBytes);
+        try {
+
+            FileOutputStream out = new FileOutputStream("E:\\Videos\\coverr-workers-in-field-1561486234623.mp4");
+            out.write(decodedBytes);
+            out.close();
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+
         }
     }
 }

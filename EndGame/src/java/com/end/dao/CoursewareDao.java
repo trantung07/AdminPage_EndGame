@@ -91,14 +91,15 @@ public class CoursewareDao {
         ResultSet rs = null;
         try {
             con = DBConnection.openConnection();
-            stm = con.prepareCall("{ call insertNewCourseware(?,?,?,?,?,?,?)}");
+            stm = con.prepareCall("{ call insertNewCourseware(?,?,?,?,?,?,?,?)}");
             stm.setString(1, cou.getName());
             stm.setInt(2, cou.getLessionId());
             stm.setString(3, cou.getLink());
-            stm.setInt(4, cou.getType());
-            stm.setString(5, cou.getDescription());
-            stm.setInt(6, cou.getCreatedBy());
-            stm.setInt(7, cou.getUpdatedBy());
+            stm.setString(4, cou.getFileName());
+            stm.setInt(5, cou.getType());
+            stm.setString(6, cou.getDescription());
+            stm.setInt(7, cou.getCreatedBy());
+            stm.setInt(8, cou.getUpdatedBy());
             stm.executeUpdate();
             result = true;
         } catch (SQLException ex) {
@@ -147,14 +148,15 @@ public class CoursewareDao {
         ResultSet rs = null;
         try {
             con = DBConnection.openConnection();
-            stm = con.prepareCall("{ call updateCoureware(?,?,?,?,?,?,?)}");
+            stm = con.prepareCall("{ call updateCoureware(?,?,?,?,?,?,?,?)}");
             stm.setInt(1, ware.getId());
             stm.setString(2, ware.getName());
             stm.setInt(3, ware.getLessionId());
             stm.setString(4, ware.getLink());
-            stm.setString(5, ware.getDescription());
-            stm.setInt(6, ware.getType());
-            stm.setInt(7, ware.getUpdatedBy());
+            stm.setString(5, ware.getFileName());
+            stm.setString(6, ware.getDescription());
+            stm.setInt(7, ware.getType());
+            stm.setInt(8, ware.getUpdatedBy());
             stm.executeUpdate();
             result = true;
         } catch (SQLException ex) {
